@@ -39,6 +39,7 @@
 
 -(IBAction)startWatch:(id)sender {
     self.now = [NSDate date];
+    [self.stopwatchDisplayLink invalidate];
     [self setUpStopwatchLink];
 }
 -(IBAction)stopWatch:(id)sender {
