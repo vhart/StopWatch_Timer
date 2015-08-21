@@ -16,16 +16,24 @@
 
 @implementation SWViewController
 
-
+-(void)setUpStopwatchLink {
+    self.stopwatchDisplayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(fireStopwatchDisplayLink)];
+    [self.stopwatchDisplayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+    
+}
+-(void)fireStopwatchDisplayLink {
+    
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
 }
 
 -(IBAction)startWatch:(id)sender {
-    
+    [self setUpStopwatchLink];
 }
 -(IBAction)stopWatch:(id)sender {
+    self.stopwatchDisplayLink.paused = YES;
     
 }
 
