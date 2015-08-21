@@ -11,10 +11,17 @@
 
 @interface SWViewController ()
 @property (nonatomic) CADisplayLink* stopwatchDisplayLink;
+@property (weak, nonatomic) IBOutlet UILabel* timerLabel;
+@property (nonatomic) NSDate* now;
 
 @end
 
 @implementation SWViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+}
 
 -(void)setUpStopwatchLink {
     self.stopwatchDisplayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(fireStopwatchDisplayLink)];
@@ -22,12 +29,12 @@
     
 }
 -(void)fireStopwatchDisplayLink {
+     NSTimeInterval interval = [self.now timeIntervalSinceNow];
     
-}
-- (void)viewDidLoad {
-    [super viewDidLoad];
     
+    self.timerLabel.text = [NSString stringWithFormat:@"%f", -interval];
 }
+
 
 -(IBAction)startWatch:(id)sender {
     [self setUpStopwatchLink];
