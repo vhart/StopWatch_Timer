@@ -38,6 +38,7 @@
 
 
 -(IBAction)startWatch:(id)sender {
+    self.now = [NSDate date];
     [self setUpStopwatchLink];
 }
 -(IBAction)stopWatch:(id)sender {
