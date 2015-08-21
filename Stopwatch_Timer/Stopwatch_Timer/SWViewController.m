@@ -33,6 +33,7 @@
     
     
     self.timerLabel.text = [NSString stringWithFormat:@"%f", -interval];
+    
 }
 
 
