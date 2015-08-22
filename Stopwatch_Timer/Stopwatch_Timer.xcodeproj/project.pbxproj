@@ -16,6 +16,7 @@
 		C769A6E91B878F8600F61421 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C769A6E71B878F8600F61421 /* LaunchScreen.xib */; };
 		C769A6F51B878F8600F61421 /* Stopwatch_TimerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C769A6F41B878F8600F61421 /* Stopwatch_TimerTests.m */; };
 		C769A7341B884D5300F61421 /* SWTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C769A7331B884D5300F61421 /* SWTableViewController.m */; };
+		C769A7371B88DDAC00F61421 /* SWStopWatchHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = C769A7361B88DDAC00F61421 /* SWStopWatchHandler.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,8 @@
 		C769A6F41B878F8600F61421 /* Stopwatch_TimerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Stopwatch_TimerTests.m; sourceTree = "<group>"; };
 		C769A7321B884D5300F61421 /* SWTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWTableViewController.h; sourceTree = "<group>"; };
 		C769A7331B884D5300F61421 /* SWTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWTableViewController.m; sourceTree = "<group>"; };
+		C769A7351B88DDAC00F61421 /* SWStopWatchHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWStopWatchHandler.h; sourceTree = "<group>"; };
+		C769A7361B88DDAC00F61421 /* SWStopWatchHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWStopWatchHandler.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +95,8 @@
 				C769A6DD1B878F8600F61421 /* AppDelegate.m */,
 				5D0DE1791B87966E0030AF64 /* SWViewController.h */,
 				5D0DE17A1B87966E0030AF64 /* SWViewController.m */,
+				C769A7351B88DDAC00F61421 /* SWStopWatchHandler.h */,
+				C769A7361B88DDAC00F61421 /* SWStopWatchHandler.m */,
 				C769A6E21B878F8600F61421 /* Main.storyboard */,
 				C769A7321B884D5300F61421 /* SWTableViewController.h */,
 				C769A7331B884D5300F61421 /* SWTableViewController.m */,
@@ -230,6 +235,7 @@
 			files = (
 				5D0DE17B1B87966E0030AF64 /* SWViewController.m in Sources */,
 				C769A6DE1B878F8600F61421 /* AppDelegate.m in Sources */,
+				C769A7371B88DDAC00F61421 /* SWStopWatchHandler.m in Sources */,
 				C769A6DB1B878F8600F61421 /* main.m in Sources */,
 				C769A7341B884D5300F61421 /* SWTableViewController.m in Sources */,
 			);

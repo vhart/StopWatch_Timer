@@ -11,6 +11,7 @@
 #import "SWViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "SWTableViewController.h"
+#import "SWStopWatchHandler.h"
 
 CFTimeInterval const frameInterval = 1.0/60.0f;
 
@@ -23,9 +24,10 @@ CFTimeInterval const frameInterval = 1.0/60.0f;
 @property (weak, nonatomic) IBOutlet UIView *tableViewSpace;
 @property (nonatomic,strong) SWTableViewController *lapTableView;
 @property (weak, nonatomic) IBOutlet UIButton *startButton;
-@property (weak, nonatomic) IBOutlet UIButton *stopButton;
+@property (weak, nonatomic) IBOutlet UIButton *lapButton;
 @property (nonatomic) int startButtonState;
-@property (nonatomic) int stopButtonState;
+@property (nonatomic) int lapButtonState;
+@property (nonatomic) CFTimeInterval lapTimerRef;
 
 
 @end
@@ -34,16 +36,17 @@ CFTimeInterval const frameInterval = 1.0/60.0f;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.runningTimerValue = 0.0f;
-    self.startButtonState = -1;
-    self.stopButtonState = -1;
-    self.stopButton.hidden = YES;
+    
+    [self setUpButtons];
    
     [self embedTableViewController];
 }
 
--(void)setUpTimerLabel{
-    
+-(void)setUpButtons{
+    self.runningTimerValue = 0.0f;
+    self.startButtonState = -1;
+    self.lapButtonState = -1;
+    self.lapButton.enabled = NO;
 }
 
 -(void)setUpStopwatchLink {
@@ -56,8 +59,12 @@ CFTimeInterval const frameInterval = 1.0/60.0f;
     self.runningTimerValue += frameInterval;
     self.runningTimerLabel.text = [NSString stringWithFormat:@"%.2lf", self.runningTimerValue];
     
-    self.lapTimerLabel.text = [NSString stringWithFormat:@"%.2lf", [self.stopwatchDisplayLink timestamp] - self.startTime];
-
+    double timeElapse = [self.stopwatchDisplayLink timestamp] - self.startTime;
+    
+    
+        
+    self.lapTimerLabel.text = [NSString stringWithFormat:@"%.2lf", self.lapTimerRef + timeElapse];
+   
     
 }
 
@@ -65,10 +72,11 @@ CFTimeInterval const frameInterval = 1.0/60.0f;
 -(IBAction)startWatch:(id)sender {
     switch (self.startButtonState) {
         case -1:
-            <#statements#>
+            [self startButtonSelected];
+            
             break;
         case 1:
-            
+            [self stopButtonSelected];
             break;
         default:
             break;
@@ -78,13 +86,13 @@ CFTimeInterval const frameInterval = 1.0/60.0f;
 //    [self.stopwatchDisplayLink invalidate];
 //    [self setUpStopwatchLink];
 }
--(IBAction)stopWatch:(id)sender {
-    switch (self.stopButtonState) {
+-(IBAction)lapButton:(id)sender {
+    switch (self.lapButtonState) {
         case -1:
-            <#statements#>
+            [self lapButtonSelected];
             break;
         case 1:
-            
+            [self resetButtonSelected];
             break;
         default:
             break;
@@ -92,11 +100,15 @@ CFTimeInterval const frameInterval = 1.0/60.0f;
 //    self.stopwatchDisplayLink.paused = YES;
     
 }
--(void)startButtonOn {
+             
+#pragma mark ActionsForStates
+
+//START/STOP
+-(void)startButtonSelected {
     self.startButton.backgroundColor = [UIColor redColor];
     [self.startButton setTitle:@"Stop" forState:UIControlStateNormal];
-    self.stopButton.backgroundColor = [UIColor lightGrayColor];
-    [self.stopButton setTitle:@"Lap" forState:UIControlStateNormal];
+    self.lapButton.backgroundColor = [UIColor lightGrayColor];
+    [self.lapButton setTitle:@"Lap" forState:UIControlStateNormal];
     if (self.stopwatchDisplayLink == nil) {
         [self setUpStopwatchLink];
     } else {
@@ -107,19 +119,39 @@ CFTimeInterval const frameInterval = 1.0/60.0f;
     
     self.startButtonState *= -1;
 }
--(void)startButtonOff {
+//************
+             
+-(void)stopButtonSelected {
+    
     self.startButton.backgroundColor = [UIColor greenColor];
     [self.startButton setTitle:@"Resume" forState:UIControlStateNormal];
-    [self.stopButton setTitle:@"Reset" forState:UIControlStateNormal];
-    self.stopwatchDisplayLink.paused = NO;
-}
--(void)stopButtonOn {
     
-}
--(void)stopButtonOff {
+    [self.lapButton setTitle:@"Reset" forState:UIControlStateNormal];
+    self.lapButtonState *= -1;
+    
+    self.stopwatchDisplayLink.paused = NO;
+    self.lapTimerRef = [self.lapTimerLabel.text doubleValue];
     
 }
 
+//***************************************
+
+- (void) lapButtonSelected{
+    
+    self.lapTimerRef = 0.0f;
+    self.startTime = CACurrentMediaTime();
+    [self.stopwatchDisplayLink invalidate];
+    [self setUpStopwatchLink];
+
+}
+
+- (void) resetButtonSelected{
+    
+    [self setUpButtons];
+}
+
+#pragma mark Embedding
+//EMBEDDING METHOD
 - (void) embedTableViewController{
     
     self.lapTableView = [self.storyboard instantiateViewControllerWithIdentifier:@"LapTableViewCtrlIdentifier"];
@@ -132,6 +164,6 @@ CFTimeInterval const frameInterval = 1.0/60.0f;
     
 }
 
-
+//***************************************
 
 @end
