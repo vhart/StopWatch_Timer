@@ -7,8 +7,10 @@
 //
 
 #import "SWTimerTableViewController.h"
+#import "SWTimerViewController.h"
+#import "Timer.h"
 
-@interface SWTimerTableViewController ()
+@interface SWTimerTableViewController () 
 
 @end
 
@@ -16,7 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.presetDictionary = [[NSMutableDictionary alloc] init];
+    self.presetArrayOfDictionaries = [[NSMutableArray alloc] init];
     
 }
 
@@ -36,14 +38,15 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return [self.presetDictionary allKeys].count;
+    return [self.presetArrayOfDictionaries count];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TimerCellIdentifier" forIndexPath:indexPath];
-    NSArray *keys = [self.presetDictionary allKeys];
-    cell.textLabel.text = keys[indexPath.row];
+    NSDictionary *temp = self.presetArrayOfDictionaries[indexPath.row];
+    NSString *title = [temp objectForKey:@"name"];
+    cell.textLabel.text = title;
     // Configure the cell...
     
     return cell;
@@ -51,7 +54,11 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    NSDictionary * temp = [self.presetArrayOfDictionaries objectAtIndex:indexPath.row];
+    Timer *timer = [temp objectForKey:@"timer"];
+    SWTimerViewController *timerView = [[SWTimerViewController alloc]init];
+   // timerView.timer =  timer;
+    [self.navigationController pushViewController:timerView  animated:YES];
 }
 
 @end
