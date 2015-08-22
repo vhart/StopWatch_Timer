@@ -58,10 +58,34 @@ CFTimeInterval const frameInterval = 1.0/60.0f;
 -(void)fireStopwatchDisplayLink {
     
     self.runningTimerValue += frameInterval;
-    self.runningTimerLabel.text = [NSString stringWithFormat:@"%.2lf", self.runningTimerValue];
+//    self.runningTimerLabel.text = [NSString stringWithFormat:@"%.2lf", self.runningTimerValue];
+//    
+    self.runningTimerLabel.text = [self timeFormattedWithValue:self.runningTimerValue];
+   
+    
+}
+-(NSString*)timeFormattedWithValue:(double)value  {
+    
+    double time = value;
+    int hours = 3600;
+    
     
    
-   
+    
+    
+    int HH = time / hours;
+    
+    
+    time = time - 3600 * HH;
+    int MM = time / 60;
+    time = time - 60 * HH;
+    int SS = floor(time);
+    int mm = (time - SS) * 100;
+    if (mm <= 9) {
+        return [NSString stringWithFormat:@"%.2d:%.2d:%.2d:0%d", HH, MM, SS, mm];
+    }
+    
+    return [NSString stringWithFormat:@"%.2d:%.2d:%.2d:%d", HH, MM, SS, mm];
     
 }
 
