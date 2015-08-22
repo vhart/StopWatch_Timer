@@ -10,4 +10,8 @@
 
 @interface Timer : NSObject
 
+@property (nonatomic) double secondsForTimer;
+
+- (instancetype) initWithHours:(int)hours minutes:(int)minutes;
+
 @end
