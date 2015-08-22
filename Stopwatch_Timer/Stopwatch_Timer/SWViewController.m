@@ -46,7 +46,8 @@ CFTimeInterval const frameInterval = 1.0/60.0f;
     self.runningTimerValue += frameInterval;
     self.runningTimerLabel.text = [NSString stringWithFormat:@"%lf", self.runningTimerValue];
     
-    self.lapTimerLabel.text = [NSString stringWithFormat:@"%lf", [self.stopwatchDisplayLink timestamp] - self.startTime];
+    self.timerLabel.text = [NSString stringWithFormat:@"%.2lf", [self.stopwatchDisplayLink timestamp] - self.startTime];
+
     
 }
 
