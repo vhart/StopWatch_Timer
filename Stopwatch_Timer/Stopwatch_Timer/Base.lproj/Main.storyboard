@@ -70,12 +70,6 @@
                                             <action selector="startWatch:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="wDJ-Ub-sSV"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BDQ-OU-PnC">
-                                        <rect key="frame" x="464" y="10" width="34" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.85821109384542549" green="0.96028398357892997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -84,12 +78,10 @@
                                     <constraint firstItem="udl-Tf-gaP" firstAttribute="leading" secondItem="dIl-ca-V0o" secondAttribute="leading" constant="70" id="EQc-lG-yvA"/>
                                     <constraint firstAttribute="bottom" secondItem="udl-Tf-gaP" secondAttribute="bottom" constant="8" id="QCw-Z8-3Tl"/>
                                     <constraint firstAttribute="bottom" secondItem="Tc1-Fw-KQW" secondAttribute="bottom" constant="180" id="VGc-ft-eew"/>
-                                    <constraint firstItem="BDQ-OU-PnC" firstAttribute="top" secondItem="dIl-ca-V0o" secondAttribute="top" constant="10" id="VJE-Nk-WOQ"/>
                                     <constraint firstAttribute="trailing" secondItem="Tc1-Fw-KQW" secondAttribute="trailing" constant="70" id="Y78-Cj-yJn"/>
                                     <constraint firstAttribute="trailing" secondItem="Tc1-Fw-KQW" secondAttribute="trailing" constant="70" id="dLu-JP-SLW"/>
                                     <constraint firstItem="yOT-QX-orI" firstAttribute="top" secondItem="dIl-ca-V0o" secondAttribute="top" constant="41" id="qED-6P-dap"/>
                                     <constraint firstAttribute="bottom" secondItem="udl-Tf-gaP" secondAttribute="bottom" constant="180" id="urD-5f-c3o"/>
-                                    <constraint firstAttribute="trailing" secondItem="BDQ-OU-PnC" secondAttribute="trailing" constant="70" id="yRi-nE-AX9"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -128,7 +120,6 @@
                     </view>
                     <connections>
                         <outlet property="lapButton" destination="Tc1-Fw-KQW" id="CDv-qA-XrN"/>
-                        <outlet property="lapTimerLabel" destination="BDQ-OU-PnC" id="iTf-f5-lsy"/>
                         <outlet property="runningTimerLabel" destination="yOT-QX-orI" id="TtY-ow-q64"/>
                         <outlet property="startButton" destination="udl-Tf-gaP" id="ByS-r9-GdN"/>
                         <outlet property="tableViewSpace" destination="c0X-bG-hAR" id="ydW-K8-xy2"/>
@@ -176,7 +167,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="buc-KN-gK8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1146" y="165"/>
+            <point key="canvasLocation" x="1302" y="186"/>
         </scene>
     </scenes>
 </document>

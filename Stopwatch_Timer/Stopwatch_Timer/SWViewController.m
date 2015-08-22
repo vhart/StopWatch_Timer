@@ -17,7 +17,7 @@ CFTimeInterval const frameInterval = 1.0/60.0f;
 
 @interface SWViewController ()
 @property (nonatomic) CADisplayLink* stopwatchDisplayLink;
-@property (weak, nonatomic) IBOutlet UILabel* lapTimerLabel;
+@property (nonatomic) NSString* lapTimerText;
 @property (nonatomic, weak) IBOutlet UILabel* runningTimerLabel;
 @property (nonatomic) CFTimeInterval startTime;
 @property (nonatomic) CFTimeInterval runningTimerValue;
@@ -60,11 +60,7 @@ CFTimeInterval const frameInterval = 1.0/60.0f;
     self.runningTimerValue += frameInterval;
     self.runningTimerLabel.text = [NSString stringWithFormat:@"%.2lf", self.runningTimerValue];
     
-    double timeElapse = [self.stopwatchDisplayLink timestamp] - self.startTime;
-    
-    
-        
-    self.lapTimerLabel.text = [NSString stringWithFormat:@"%.2lf", self.lapTimerRef + timeElapse];
+   
    
     
 }
@@ -133,7 +129,7 @@ CFTimeInterval const frameInterval = 1.0/60.0f;
     self.lapButtonState *= -1;
     self.startButtonState *= -1;
     self.stopwatchDisplayLink.paused = YES;
-    self.lapTimerRef = [self.lapTimerLabel.text doubleValue];
+    self.lapTimerRef = [self.lapTimerText doubleValue];
     
 }
 
@@ -160,7 +156,7 @@ CFTimeInterval const frameInterval = 1.0/60.0f;
     
     [self setUpButtons];
     self.runningTimerLabel.text = @"00.00";
-    self.lapTimerLabel.text = @"0.00";
+
     [self.lapTableView.lapTimesArray removeAllObjects];
     [self.lapTableView.tableView reloadData];
     
