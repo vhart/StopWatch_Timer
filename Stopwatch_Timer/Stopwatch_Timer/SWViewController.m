@@ -6,13 +6,21 @@
 //  Copyright (c) 2015 Varindra Hart. All rights reserved.
 //
 
+
+
 #import "SWViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
+CFTimeInterval const frameInterval = 1.0/60.0f;
+
 @interface SWViewController ()
 @property (nonatomic) CADisplayLink* stopwatchDisplayLink;
-@property (weak, nonatomic) IBOutlet UILabel* timerLabel;
+@property (weak, nonatomic) IBOutlet UILabel* lapTimerLabel;
+@property (nonatomic, weak) IBOutlet UILabel* runningTimerLabel;
 @property (nonatomic) CFTimeInterval startTime;
+@property (nonatomic) CFTimeInterval runningTimerValue;
+
+
 
 @end
 
@@ -20,6 +28,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.runningTimerValue = 0.0f;
+    
+}
+
+-(void)setUpTimerLabel{
     
 }
 
@@ -30,9 +43,10 @@
 }
 -(void)fireStopwatchDisplayLink {
     
+    self.runningTimerValue += frameInterval;
+    self.runningTimerLabel.text = [NSString stringWithFormat:@"%lf", self.runningTimerValue];
     
-    
-    self.timerLabel.text = [NSString stringWithFormat:@"%lf", [self.stopwatchDisplayLink timestamp] - self.startTime];
+    self.lapTimerLabel.text = [NSString stringWithFormat:@"%lf", [self.stopwatchDisplayLink timestamp] - self.startTime];
     
 }
 
