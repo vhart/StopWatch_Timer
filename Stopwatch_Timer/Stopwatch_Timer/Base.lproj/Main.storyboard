@@ -37,7 +37,7 @@
                                             <constraint firstAttribute="height" constant="60" id="9cJ-fj-b0H"/>
                                             <constraint firstAttribute="width" constant="60" id="c2l-me-vss"/>
                                         </constraints>
-                                        <state key="normal" title="STOP">
+                                        <state key="normal" title="LAP">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -129,6 +129,8 @@
                     <connections>
                         <outlet property="lapTimerLabel" destination="BDQ-OU-PnC" id="iTf-f5-lsy"/>
                         <outlet property="runningTimerLabel" destination="yOT-QX-orI" id="TtY-ow-q64"/>
+                        <outlet property="startButton" destination="udl-Tf-gaP" id="ByS-r9-GdN"/>
+                        <outlet property="stopButton" destination="Tc1-Fw-KQW" id="fxj-rw-qJI"/>
                         <outlet property="tableViewSpace" destination="c0X-bG-hAR" id="ydW-K8-xy2"/>
                     </connections>
                 </viewController>

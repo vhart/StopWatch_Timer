@@ -22,6 +22,10 @@ CFTimeInterval const frameInterval = 1.0/60.0f;
 @property (nonatomic) CFTimeInterval runningTimerValue;
 @property (weak, nonatomic) IBOutlet UIView *tableViewSpace;
 @property (nonatomic,strong) SWTableViewController *lapTableView;
+@property (weak, nonatomic) IBOutlet UIButton *startButton;
+@property (weak, nonatomic) IBOutlet UIButton *stopButton;
+@property (nonatomic) int startButtonState;
+@property (nonatomic) int stopButtonState;
 
 
 @end
@@ -31,6 +35,9 @@ CFTimeInterval const frameInterval = 1.0/60.0f;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.runningTimerValue = 0.0f;
+    self.startButtonState = -1;
+    self.stopButtonState = -1;
+    self.stopButton.hidden = YES;
    
     [self embedTableViewController];
 }
@@ -56,12 +63,60 @@ CFTimeInterval const frameInterval = 1.0/60.0f;
 
 
 -(IBAction)startWatch:(id)sender {
-    self.startTime = CACurrentMediaTime();
-    [self.stopwatchDisplayLink invalidate];
-    [self setUpStopwatchLink];
+    switch (self.startButtonState) {
+        case -1:
+            <#statements#>
+            break;
+        case 1:
+            
+            break;
+        default:
+            break;
+    }
+    
+//    self.startTime = CACurrentMediaTime();
+//    [self.stopwatchDisplayLink invalidate];
+//    [self setUpStopwatchLink];
 }
 -(IBAction)stopWatch:(id)sender {
-    self.stopwatchDisplayLink.paused = YES;
+    switch (self.stopButtonState) {
+        case -1:
+            <#statements#>
+            break;
+        case 1:
+            
+            break;
+        default:
+            break;
+    }
+//    self.stopwatchDisplayLink.paused = YES;
+    
+}
+-(void)startButtonOn {
+    self.startButton.backgroundColor = [UIColor redColor];
+    [self.startButton setTitle:@"Stop" forState:UIControlStateNormal];
+    self.stopButton.backgroundColor = [UIColor lightGrayColor];
+    [self.stopButton setTitle:@"Lap" forState:UIControlStateNormal];
+    if (self.stopwatchDisplayLink == nil) {
+        [self setUpStopwatchLink];
+    } else {
+        self.stopwatchDisplayLink.paused = YES;
+    }
+    self.startTime = CACurrentMediaTime();
+    
+    
+    self.startButtonState *= -1;
+}
+-(void)startButtonOff {
+    self.startButton.backgroundColor = [UIColor greenColor];
+    [self.startButton setTitle:@"Resume" forState:UIControlStateNormal];
+    [self.stopButton setTitle:@"Reset" forState:UIControlStateNormal];
+    self.stopwatchDisplayLink.paused = NO;
+}
+-(void)stopButtonOn {
+    
+}
+-(void)stopButtonOff {
     
 }
 
