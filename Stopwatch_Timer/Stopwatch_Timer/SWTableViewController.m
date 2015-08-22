@@ -45,8 +45,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LapsCellIdentifier" forIndexPath:indexPath];
-    cell.textLabel.text = [NSString stringWithFormat:@"Lap %lu",indexPath.row];
-    cell.detailTextLabel.text = self.lapTimesArray[indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"Lap %lu",indexPath.row +1];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%.2lf",[self.lapTimesArray[self.lapTimesArray.count- indexPath.row -1] doubleValue]];
     // Configure the cell...
     
     return cell;

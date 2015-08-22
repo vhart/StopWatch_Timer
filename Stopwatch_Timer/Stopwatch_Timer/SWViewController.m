@@ -45,6 +45,7 @@ CFTimeInterval const frameInterval = 1.0/60.0f;
 -(void)setUpButtons{
     self.runningTimerValue = 0.0f;
     self.startButtonState = -1;
+    self.lapTimerRef = 0.0f;
     self.lapButtonState = -1;
     self.lapButton.enabled = NO;
 }
@@ -109,14 +110,16 @@ CFTimeInterval const frameInterval = 1.0/60.0f;
     [self.startButton setTitle:@"Stop" forState:UIControlStateNormal];
     self.lapButton.backgroundColor = [UIColor lightGrayColor];
     [self.lapButton setTitle:@"Lap" forState:UIControlStateNormal];
+    self.lapButton.enabled = YES;
+    
     if (self.stopwatchDisplayLink == nil) {
         [self setUpStopwatchLink];
     } else {
-        self.stopwatchDisplayLink.paused = YES;
+        self.stopwatchDisplayLink.paused = NO;
     }
     self.startTime = CACurrentMediaTime();
     
-    
+    self.lapButtonState = -1;
     self.startButtonState *= -1;
 }
 //************
@@ -124,12 +127,12 @@ CFTimeInterval const frameInterval = 1.0/60.0f;
 -(void)stopButtonSelected {
     
     self.startButton.backgroundColor = [UIColor greenColor];
-    [self.startButton setTitle:@"Resume" forState:UIControlStateNormal];
+    [self.startButton setTitle:@"Start" forState:UIControlStateNormal];
     
     [self.lapButton setTitle:@"Reset" forState:UIControlStateNormal];
     self.lapButtonState *= -1;
-    
-    self.stopwatchDisplayLink.paused = NO;
+    self.startButtonState *= -1;
+    self.stopwatchDisplayLink.paused = YES;
     self.lapTimerRef = [self.lapTimerLabel.text doubleValue];
     
 }
@@ -138,16 +141,29 @@ CFTimeInterval const frameInterval = 1.0/60.0f;
 
 - (void) lapButtonSelected{
     
+    double timeElapse = [self.stopwatchDisplayLink timestamp] - self.startTime;
+    
+    [self.lapTableView.lapTimesArray insertObject:[NSString stringWithFormat:@"%.2lf", self.lapTimerRef + timeElapse] atIndex:0];
+    
+    [self.lapTableView.tableView reloadData];
     self.lapTimerRef = 0.0f;
     self.startTime = CACurrentMediaTime();
     [self.stopwatchDisplayLink invalidate];
     [self setUpStopwatchLink];
-
+    
+    
+    
+    
 }
 
 - (void) resetButtonSelected{
     
     [self setUpButtons];
+    self.runningTimerLabel.text = @"00.00";
+    self.lapTimerLabel.text = @"0.00";
+    [self.lapTableView.lapTimesArray removeAllObjects];
+    [self.lapTableView.tableView reloadData];
+    
 }
 
 #pragma mark Embedding
