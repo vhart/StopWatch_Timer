@@ -6,8 +6,10 @@
 //  Copyright (c) 2015 Varindra Hart. All rights reserved.
 //
 
+#import "Timer.h"
 #import <UIKit/UIKit.h>
 
 @interface SWTimerViewController : UIViewController
+@property (nonatomic) Timer* viewTimer;
 
 @end

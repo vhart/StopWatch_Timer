@@ -76,6 +76,58 @@
             </objects>
             <point key="canvasLocation" x="348" y="1060"/>
         </scene>
+        <!--Timer View Controller-->
+        <scene sceneID="Pz8-bl-jxa">
+            <objects>
+                <viewController id="tHb-Xa-7Hy" customClass="SWTimerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eSS-0y-a1G"/>
+                        <viewControllerLayoutGuide type="bottom" id="Kwa-hD-4uf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eHq-l1-3L6">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="q2y-tz-91i">
+                                <rect key="frame" x="140" y="219" width="320" height="162"/>
+                                <date key="date" timeIntervalSinceReferenceDate="461971230.031115">
+                                    <!--2015-08-22 21:20:30 +0000-->
+                                </date>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i1Q-QT-wEU">
+                                <rect key="frame" x="277" y="401" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonTapped:" destination="tHb-Xa-7Hy" eventType="touchUpInside" id="54a-N4-Tp7"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pxb-ce-gsD">
+                                <rect key="frame" x="279" y="178" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="i1Q-QT-wEU" firstAttribute="top" secondItem="q2y-tz-91i" secondAttribute="bottom" constant="20" id="C56-bI-Ef0"/>
+                            <constraint firstAttribute="centerX" secondItem="pxb-ce-gsD" secondAttribute="centerX" id="E9E-PN-HGu"/>
+                            <constraint firstAttribute="centerY" secondItem="q2y-tz-91i" secondAttribute="centerY" id="EQL-vG-PrZ"/>
+                            <constraint firstItem="q2y-tz-91i" firstAttribute="top" secondItem="pxb-ce-gsD" secondAttribute="bottom" constant="20" id="Kcg-fg-51e"/>
+                            <constraint firstAttribute="centerX" secondItem="q2y-tz-91i" secondAttribute="centerX" id="av3-YA-zNZ"/>
+                            <constraint firstAttribute="centerX" secondItem="i1Q-QT-wEU" secondAttribute="centerX" id="eDg-38-y67"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="datePicker" destination="q2y-tz-91i" id="ZeW-QE-JtZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I1R-Kz-snn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1028" y="1064"/>
+        </scene>
         <!--Item-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>

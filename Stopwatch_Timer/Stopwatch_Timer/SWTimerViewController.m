@@ -9,6 +9,7 @@
 #import "SWTimerViewController.h"
 
 @interface SWTimerViewController ()
+@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 
 @end
 
@@ -16,13 +17,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if (self.viewTimer == nil) {
+        
+    } else {
+        self.datePicker.hidden = YES;
+    }
+}
+- (IBAction)buttonTapped:(id)sender {
+    NSTimer *viewTimer = [[NSTimer alloc]initWithFireDate:self.datePicker.date interval:1.0 target:self selector:@selector(fireAlarmTimer) userInfo:nil repeats:NO];
     
+    [[NSRunLoop mainRunLoop] addTimer:viewTimer forMode:NSRunLoopCommonModes];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    
-}
+
 
 
 
