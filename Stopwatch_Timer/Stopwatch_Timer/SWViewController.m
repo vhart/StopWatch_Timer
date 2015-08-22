@@ -76,9 +76,9 @@ CFTimeInterval const frameInterval = 1.0/60.0f;
     int HH = time / hours;
     
     
-    time = time - 3600 * HH;
+    time = time - (3600 * HH);
     int MM = time / 60;
-    time = time - 60 * HH;
+    time = time - 60 * MM;
     int SS = floor(time);
     int mm = (time - SS) * 100;
     if (mm <= 9) {
@@ -179,7 +179,7 @@ CFTimeInterval const frameInterval = 1.0/60.0f;
 - (void) resetButtonSelected{
     
     [self setUpButtons];
-    self.runningTimerLabel.text = @"00.00";
+    self.runningTimerLabel.text = @"00:00:00:00";
 
     [self.lapTableView.lapTimesArray removeAllObjects];
     [self.lapTableView.tableView reloadData];
