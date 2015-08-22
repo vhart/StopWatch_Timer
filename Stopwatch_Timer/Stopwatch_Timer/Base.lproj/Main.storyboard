@@ -129,15 +129,17 @@
                     <connections>
                         <outlet property="lapTimerLabel" destination="BDQ-OU-PnC" id="iTf-f5-lsy"/>
                         <outlet property="runningTimerLabel" destination="yOT-QX-orI" id="TtY-ow-q64"/>
+                        <outlet property="tableViewSpace" destination="c0X-bG-hAR" id="ydW-K8-xy2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="648" y="207"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="exW-Ms-tVG">
             <objects>
-                <tableViewController id="7Ti-gR-ohV" customClass="SWTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="LapTableViewCtrlIdentifier" id="7Ti-gR-ohV" customClass="SWTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="z8J-K6-pbD">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -158,7 +160,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="buc-KN-gK8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1054" y="290"/>
+            <point key="canvasLocation" x="1146" y="165"/>
         </scene>
     </scenes>
 </document>

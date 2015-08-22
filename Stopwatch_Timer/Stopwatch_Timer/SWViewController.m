@@ -10,6 +10,7 @@
 
 #import "SWViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "SWTableViewController.h"
 
 CFTimeInterval const frameInterval = 1.0/60.0f;
 
@@ -19,7 +20,8 @@ CFTimeInterval const frameInterval = 1.0/60.0f;
 @property (nonatomic, weak) IBOutlet UILabel* runningTimerLabel;
 @property (nonatomic) CFTimeInterval startTime;
 @property (nonatomic) CFTimeInterval runningTimerValue;
-
+@property (weak, nonatomic) IBOutlet UIView *tableViewSpace;
+@property (nonatomic,strong) SWTableViewController *lapTableView;
 
 
 @end
@@ -29,7 +31,8 @@ CFTimeInterval const frameInterval = 1.0/60.0f;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.runningTimerValue = 0.0f;
-    
+   
+    [self embedTableViewController];
 }
 
 -(void)setUpTimerLabel{
@@ -44,9 +47,9 @@ CFTimeInterval const frameInterval = 1.0/60.0f;
 -(void)fireStopwatchDisplayLink {
     
     self.runningTimerValue += frameInterval;
-    self.runningTimerLabel.text = [NSString stringWithFormat:@"%lf", self.runningTimerValue];
+    self.runningTimerLabel.text = [NSString stringWithFormat:@"%.2lf", self.runningTimerValue];
     
-    self.timerLabel.text = [NSString stringWithFormat:@"%.2lf", [self.stopwatchDisplayLink timestamp] - self.startTime];
+    self.lapTimerLabel.text = [NSString stringWithFormat:@"%.2lf", [self.stopwatchDisplayLink timestamp] - self.startTime];
 
     
 }
@@ -62,7 +65,17 @@ CFTimeInterval const frameInterval = 1.0/60.0f;
     
 }
 
-
+- (void) embedTableViewController{
+    
+    self.lapTableView = [self.storyboard instantiateViewControllerWithIdentifier:@"LapTableViewCtrlIdentifier"];
+    
+    [self addChildViewController:self.lapTableView];
+    
+    self.lapTableView.view.frame = self.tableViewSpace.bounds;
+    [self.tableViewSpace addSubview:self.lapTableView.view];
+    [self.lapTableView willMoveToParentViewController:self];
+    
+}
 
 
 
