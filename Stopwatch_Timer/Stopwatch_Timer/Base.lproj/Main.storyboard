@@ -17,7 +17,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="vXZ-lx-hvc" kind="relationship" relationship="viewControllers" id="Pth-IS-4hc"/>
-                        <segue destination="PyH-LG-m5k" kind="relationship" relationship="viewControllers" id="Atj-C7-rXq"/>
+                        <segue destination="tPc-WG-ill" kind="relationship" relationship="viewControllers" id="jUd-93-bvA"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BR3-vs-8Lw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -25,11 +25,28 @@
             <point key="canvasLocation" x="-319" y="322"/>
         </scene>
         <!--Item-->
+        <scene sceneID="sso-aX-zab">
+            <objects>
+                <navigationController id="tPc-WG-ill" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="2wm-7d-gd1"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gXg-ZL-ZK3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="PyH-LG-m5k" kind="relationship" relationship="rootViewController" id="hjr-QJ-6Nx"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="COz-Gq-OZQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-834" y="1048"/>
+        </scene>
+        <!--Item-->
         <scene sceneID="a7e-sz-OHq">
             <objects>
                 <tableViewController id="PyH-LG-m5k" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="iJ3-40-wUJ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -46,6 +63,14 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Item" id="BQh-1s-S34"/>
+                    <toolbarItems>
+                        <barButtonItem title="Item" id="4mJ-5C-JwY"/>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" id="V5I-Po-anb">
+                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="N5r-3u-1xM"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="N5u-S9-fUH"/>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dRZ-pL-w4Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

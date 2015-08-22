@@ -10,4 +10,6 @@
 
 @interface SWTimerTableViewController : UITableViewController
 
+@property (nonatomic) NSMutableDictionary *presetDictionary;
+
 @end
