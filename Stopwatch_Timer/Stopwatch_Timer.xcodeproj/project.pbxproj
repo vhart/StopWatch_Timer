@@ -154,8 +154,8 @@
 		C769A7391B890D3B00F61421 /* Stopwatch */ = {
 			isa = PBXGroup;
 			children = (
-				5D0DE17A1B87966E0030AF64 /* SWViewController.m */,
 				5D0DE1791B87966E0030AF64 /* SWViewController.h */,
+				5D0DE17A1B87966E0030AF64 /* SWViewController.m */,
 				C769A7351B88DDAC00F61421 /* SWStopWatchHandler.h */,
 				C769A7361B88DDAC00F61421 /* SWStopWatchHandler.m */,
 				C769A7321B884D5300F61421 /* SWTableViewController.h */,

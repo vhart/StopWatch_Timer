@@ -39,9 +39,8 @@
     }
     else{
         [self invalidateTimer];
-        self.pauseButtonState *= -1;
-        self.startButtonState *= -1;
         
+        [self updateAllButtonStates];
         [self startButtonChanges:self.startButton];
         [self pauseButtonChanges:sender];
         
@@ -54,8 +53,7 @@
     if(self.startButtonState == -1){
         [self setUpTimer];
         
-        self.startButtonState *= -1;
-        self.pauseButtonState *= -1;
+        [self updateAllButtonStates];
         [self startButtonChanges:sender];
         [self pauseButtonChanges:self.pauseButton];
     }
@@ -64,6 +62,11 @@
         [self updateTimerLabel];
     }
     
+}
+
+- (void) updateAllButtonStates{
+    self.startButtonState *= -1;
+    self.pauseButtonState *= -1;
 }
 
 - (void)setUpTimer{
@@ -125,6 +128,7 @@
     int min = [components[1] intValue];
     self.viewTimer = [[Timer alloc] initWithHours:hour minutes:min];
 }
+
 
 - (void) updateTimerLabel{
     
