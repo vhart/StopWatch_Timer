@@ -22,4 +22,19 @@
     return nil;
 }
 
+- (NSString *)timeStringFromTimer{
+    
+    double time = self.secondsForTimer;
+    int HH =  time/ 3600;
+    
+    time = time - (3600 * HH);
+    int MM = time / 60;
+    time = time - 60 * MM;
+    int SS = floor(time);
+    
+    return [NSString stringWithFormat:@"%.2d:%.2d:%.2d", HH, MM, SS];
+    
+
+}
+
 @end
