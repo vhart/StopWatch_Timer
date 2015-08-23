@@ -7,6 +7,7 @@
 //
 
 #import "SWTimerViewController.h"
+#import "SWTableViewController.h"
 
 @interface SWTimerViewController ()
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
@@ -14,15 +15,25 @@
 @property (weak, nonatomic) IBOutlet UILabel *timerLabel;
 @property (weak, nonatomic) IBOutlet UIButton *pauseButton;
 @property (weak, nonatomic) IBOutlet UIButton *startButton;
+@property (weak, nonatomic) IBOutlet UIView *timerView;
+@property (weak, nonatomic) IBOutlet UILabel *secondsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *minutesLabel;
+@property (weak, nonatomic) IBOutlet UILabel *hoursLabel;
+@property (weak, nonatomic) IBOutlet UIView *play_stopView;
+@property (weak, nonatomic) IBOutlet UIView *tableView_view;
+
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedController;
 @property (nonatomic) NSInteger startButtonState;
 @property (nonatomic) NSInteger pauseButtonState;
 @property (nonatomic, strong) NSTimer *countdown_Timer;
+@property (nonatomic) SWTableViewController *presetsTableView;
 @end
 
 @implementation SWTimerViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self embedTableView];
     self.startButtonState = -1;
     self.pauseButtonState = -1;
     if (self.viewTimer == nil) {
@@ -32,6 +43,32 @@
     }
     
 }
+
+-(void) embedTableView{
+    
+    self.presetsTableView = [[SWTableViewController alloc]init];
+    
+    [self addChildViewController:self.presetsTableView];
+    
+    self.presetsTableView.view.frame = self.tableView_view.bounds;
+    [self.tableView_view addSubview:self.presetsTableView.view];
+    
+    [self.presetsTableView willMoveToParentViewController:self];
+}
+
+- (IBAction)segmentToggled:(UISegmentedControl *)sender {
+    
+    if(self.segmentedController.selectedSegmentIndex == 0){
+        self.tableView_view.hidden = YES;
+        self.play_stopView.hidden = NO;
+    }
+    else if(self.segmentedController.selectedSegmentIndex == 1){
+        self.tableView_view.hidden = NO;
+        self.play_stopView.hidden = YES;
+    }
+    
+}
+
 - (IBAction)pauseButton:(UIButton *)sender {
     
     if(self.pauseButtonState == -1){
