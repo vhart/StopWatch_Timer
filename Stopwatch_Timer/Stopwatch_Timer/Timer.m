@@ -22,6 +22,20 @@
     return nil;
 }
 
+
+- (instancetype) initWithTimer:(Timer *)timer{
+    
+    if (self = [super init]) {
+        
+        self.secondsForTimer = timer.secondsForTimer;
+        
+        return self;
+    }
+    return nil;
+}
+
+
+
 - (NSString *)timeStringFromTimer{
     
     double time = self.secondsForTimer;

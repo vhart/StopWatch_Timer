@@ -8,8 +8,9 @@
 
 #import "Timer.h"
 #import <UIKit/UIKit.h>
+#import "SWTimerTableViewController.h"
 
-@interface SWTimerViewController : UIViewController
+@interface SWTimerViewController : UIViewController <SWTimerTableViewDelegate>
 @property (nonatomic) Timer* viewTimer;
 
 @end

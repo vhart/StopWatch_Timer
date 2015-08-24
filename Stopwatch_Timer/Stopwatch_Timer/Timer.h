@@ -13,5 +13,6 @@
 @property (nonatomic) double secondsForTimer;
 
 - (instancetype) initWithHours:(int)hours minutes:(int)minutes;
+- (instancetype) initWithTimer:(Timer *)timer;
 - (NSString *)timeStringFromTimer;
 @end
