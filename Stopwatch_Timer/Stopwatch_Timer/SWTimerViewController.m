@@ -283,5 +283,11 @@
     [self buttonsDefaultState];
     [self countdownBegins];
 }
+- (IBAction)musicViewSelected:(UIButton *)sender {
+    NSLog(@"Music view selected");
+}
+- (IBAction)playAudioButtonSelected:(UIButton *)sender {
+    NSLog(@"audio play, audio stop?");
+}
 
 @end

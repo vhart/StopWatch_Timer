@@ -120,31 +120,41 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BxY-8d-Arr">
+                                        <rect key="frame" x="0.0" y="0.0" width="596" height="32"/>
+                                        <connections>
+                                            <action selector="musicViewSelected:" destination="tHb-Xa-7Hy" eventType="touchUpInside" id="C5F-S7-Ey4"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O9B-PO-Hrv">
                                         <rect key="frame" x="552" y="0.0" width="32" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="32" id="nQb-11-gHZ"/>
                                         </constraints>
                                         <state key="normal" backgroundImage="audio-wave-2-xxl"/>
+                                        <connections>
+                                            <action selector="playAudioButtonSelected:" destination="tHb-Xa-7Hy" eventType="touchUpInside" id="yJn-iR-aEO"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.81662326389999995" green="0.81662326389999995" blue="0.81662326389999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="BxY-8d-Arr" secondAttribute="bottom" id="39e-FK-eYd"/>
                                     <constraint firstItem="Ovt-sN-UjJ" firstAttribute="leading" secondItem="3wD-Ek-4xy" secondAttribute="trailing" constant="30" id="6Vm-XE-mdN"/>
                                     <constraint firstAttribute="height" constant="32" id="9Hh-mq-hh8"/>
                                     <constraint firstItem="Ovt-sN-UjJ" firstAttribute="top" secondItem="tiU-Bd-X2V" secondAttribute="top" constant="1" id="AHZ-hH-hpu"/>
+                                    <constraint firstItem="BxY-8d-Arr" firstAttribute="leading" secondItem="tiU-Bd-X2V" secondAttribute="leading" id="Ck2-xP-GaV"/>
                                     <constraint firstItem="3wD-Ek-4xy" firstAttribute="leading" secondItem="tiU-Bd-X2V" secondAttribute="leading" constant="10" id="Hz8-A7-9DH"/>
+                                    <constraint firstItem="BxY-8d-Arr" firstAttribute="top" secondItem="tiU-Bd-X2V" secondAttribute="top" id="LfB-fJ-c9v"/>
                                     <constraint firstItem="O9B-PO-Hrv" firstAttribute="top" secondItem="tiU-Bd-X2V" secondAttribute="top" id="QXt-X8-3pM"/>
                                     <constraint firstAttribute="bottom" secondItem="Ovt-sN-UjJ" secondAttribute="bottom" constant="1" id="UiS-Mv-1Gd"/>
                                     <constraint firstAttribute="bottom" secondItem="O9B-PO-Hrv" secondAttribute="bottom" id="ZeO-a9-Aid"/>
+                                    <constraint firstAttribute="trailing" secondItem="BxY-8d-Arr" secondAttribute="trailing" id="bFb-AW-vhl"/>
                                     <constraint firstItem="3wD-Ek-4xy" firstAttribute="top" secondItem="tiU-Bd-X2V" secondAttribute="top" id="dcz-GL-vH9"/>
                                     <constraint firstAttribute="bottom" secondItem="3wD-Ek-4xy" secondAttribute="bottom" id="gWe-cm-jmp"/>
                                     <constraint firstAttribute="trailing" secondItem="O9B-PO-Hrv" secondAttribute="trailing" constant="12" id="tnd-OP-4mY"/>
                                 </constraints>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="qXX-XM-3oh" appends="YES" id="NRi-ej-8Da"/>
-                                </connections>
                             </view>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="aeC-O2-Qvb">
                                 <rect key="frame" x="0.0" y="306" width="600" height="29"/>
@@ -383,7 +393,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I1R-Kz-snn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="qXX-XM-3oh"/>
             </objects>
             <point key="canvasLocation" x="76" y="1108"/>
         </scene>
