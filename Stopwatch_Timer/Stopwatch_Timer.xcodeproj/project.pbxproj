@@ -21,6 +21,7 @@
 		C769A73C1B890E0200F61421 /* SWTimerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C769A73B1B890E0200F61421 /* SWTimerTableViewController.m */; };
 		C769A73F1B890E2100F61421 /* SWTimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C769A73E1B890E2100F61421 /* SWTimerViewController.m */; };
 		C769A7421B890E4200F61421 /* Timer.m in Sources */ = {isa = PBXBuildFile; fileRef = C769A7411B890E4200F61421 /* Timer.m */; };
+		C78ED8BB1B8D4B61000BA969 /* LabelAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = C78ED8BA1B8D4B61000BA969 /* LabelAnimator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		C769A73E1B890E2100F61421 /* SWTimerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWTimerViewController.m; sourceTree = "<group>"; };
 		C769A7401B890E4200F61421 /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
 		C769A7411B890E4200F61421 /* Timer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Timer.m; sourceTree = "<group>"; };
+		C78ED8B91B8D4B61000BA969 /* LabelAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelAnimator.h; sourceTree = "<group>"; };
+		C78ED8BA1B8D4B61000BA969 /* LabelAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelAnimator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +153,8 @@
 				C769A73E1B890E2100F61421 /* SWTimerViewController.m */,
 				C769A7401B890E4200F61421 /* Timer.h */,
 				C769A7411B890E4200F61421 /* Timer.m */,
+				C78ED8B91B8D4B61000BA969 /* LabelAnimator.h */,
+				C78ED8BA1B8D4B61000BA969 /* LabelAnimator.m */,
 			);
 			name = Timer;
 			sourceTree = "<group>";
@@ -273,6 +278,7 @@
 				C769A6DE1B878F8600F61421 /* AppDelegate.m in Sources */,
 				C769A7421B890E4200F61421 /* Timer.m in Sources */,
 				C769A6DB1B878F8600F61421 /* main.m in Sources */,
+				C78ED8BB1B8D4B61000BA969 /* LabelAnimator.m in Sources */,
 				C769A73F1B890E2100F61421 /* SWTimerViewController.m in Sources */,
 				C769A7341B884D5300F61421 /* SWTableViewController.m in Sources */,
 			);
