@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		5D0DE17B1B87966E0030AF64 /* SWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0DE17A1B87966E0030AF64 /* SWViewController.m */; };
 		5D0DE17D1B8798B30030AF64 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D0DE17C1B8798B30030AF64 /* QuartzCore.framework */; };
+		5D37317C1B8D471000390BB8 /* MonospaceTypewriter.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D37317B1B8D471000390BB8 /* MonospaceTypewriter.ttf */; };
+		5D37317E1B8D49E600390BB8 /* DroidSansMono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D37317D1B8D49E600390BB8 /* DroidSansMono.ttf */; };
 		C769A6DB1B878F8600F61421 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C769A6DA1B878F8600F61421 /* main.m */; };
 		C769A6DE1B878F8600F61421 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C769A6DD1B878F8600F61421 /* AppDelegate.m */; };
 		C769A6E41B878F8600F61421 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C769A6E21B878F8600F61421 /* Main.storyboard */; };
@@ -35,6 +37,8 @@
 		5D0DE1791B87966E0030AF64 /* SWViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWViewController.h; sourceTree = "<group>"; };
 		5D0DE17A1B87966E0030AF64 /* SWViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWViewController.m; sourceTree = "<group>"; };
 		5D0DE17C1B8798B30030AF64 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		5D37317B1B8D471000390BB8 /* MonospaceTypewriter.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MonospaceTypewriter.ttf; sourceTree = "<group>"; };
+		5D37317D1B8D49E600390BB8 /* DroidSansMono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DroidSansMono.ttf; sourceTree = "<group>"; };
 		C769A6D51B878F8600F61421 /* Stopwatch_Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stopwatch_Timer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C769A6D91B878F8600F61421 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C769A6DA1B878F8600F61421 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -114,6 +118,8 @@
 			children = (
 				C769A6D91B878F8600F61421 /* Info.plist */,
 				C769A6DA1B878F8600F61421 /* main.m */,
+				5D37317B1B8D471000390BB8 /* MonospaceTypewriter.ttf */,
+				5D37317D1B8D49E600390BB8 /* DroidSansMono.ttf */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -240,9 +246,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D37317E1B8D49E600390BB8 /* DroidSansMono.ttf in Resources */,
 				C769A6E41B878F8600F61421 /* Main.storyboard in Resources */,
 				C769A6E91B878F8600F61421 /* LaunchScreen.xib in Resources */,
 				C769A6E61B878F8600F61421 /* Images.xcassets in Resources */,
+				5D37317C1B8D471000390BB8 /* MonospaceTypewriter.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
