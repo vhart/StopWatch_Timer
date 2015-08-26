@@ -21,8 +21,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *secondsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *minutesLabel;
 @property (weak, nonatomic) IBOutlet UILabel *hoursLabel;
+@property (weak, nonatomic) IBOutlet UILabel *musicChoiceLabel;
 @property (weak, nonatomic) IBOutlet UIView *play_stopView;
 @property (weak, nonatomic) IBOutlet UIView *tableView_view;
+@property (weak, nonatomic) IBOutlet UIView *musicLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedController;
 
 @property (nonatomic) NSInteger startButtonState;
@@ -42,7 +44,11 @@
     [self embedTableView];
     [self buttonsDefaultState];
     [self addBorderToButtons];
-    
+    self.navigationController.navigationBarHidden = NO;
+    self.musicLabel.layer.borderColor = [[UIColor purpleColor]CGColor];
+    self.musicLabel.layer.borderWidth = 1.0f;
+    self.navigationItem.title = @"Timer";
+
     
 }
 
