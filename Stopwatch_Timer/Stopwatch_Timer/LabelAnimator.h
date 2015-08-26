@@ -27,7 +27,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
 @property (nonatomic) UILabel * mediumLabel;
 @property (nonatomic) UILabel * largeLabel;
 
-- (instancetype)
+//- (instancetype)
 
 
 @end
