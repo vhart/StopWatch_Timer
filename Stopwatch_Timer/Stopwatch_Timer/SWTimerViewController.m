@@ -8,7 +8,8 @@
 
 #import "SWTimerViewController.h"
 #import "SWTimerTableViewController.h"
-
+#import "KAProgressLabel.h"
+#import "LabelAnimator.h"
 
 @interface SWTimerViewController ()
 
@@ -18,9 +19,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *pauseButton;
 @property (weak, nonatomic) IBOutlet UIButton *startButton;
 @property (weak, nonatomic) IBOutlet UIView *timerView;
-@property (weak, nonatomic) IBOutlet UILabel *secondsLabel;
-@property (weak, nonatomic) IBOutlet UILabel *minutesLabel;
-@property (weak, nonatomic) IBOutlet UILabel *hoursLabel;
+@property (weak, nonatomic) IBOutlet KAProgressLabel *hoursLabel;
+@property (weak, nonatomic) IBOutlet KAProgressLabel *minutesLabel;
+@property (weak, nonatomic) IBOutlet KAProgressLabel *secondsLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *musicChoiceLabel;
 @property (weak, nonatomic) IBOutlet UIView *play_stopView;
 @property (weak, nonatomic) IBOutlet UIView *tableView_view;
@@ -33,6 +35,8 @@
 @property (nonatomic, strong) NSTimer *countdown_Timer;
 
 @property (nonatomic) SWTimerTableViewController *presetsTableView;
+
+@property (nonatomic) LabelAnimator * animatedLabelsManager;
 
 @end
 
@@ -48,6 +52,8 @@
     self.musicLabel.layer.borderColor = [[UIColor purpleColor]CGColor];
     self.musicLabel.layer.borderWidth = 1.0f;
     self.navigationItem.title = @"Timer";
+    self.animatedLabelsManager = [[LabelAnimator alloc] initWithLabels:self.secondsLabel medium:self.minutesLabel large:self.hoursLabel];
+    [self.animatedLabelsManager setUpAllPropertyLabels];
 
     
 }
@@ -168,6 +174,7 @@
         
         [button setTitle:@"Pause" forState:UIControlStateNormal];
         [button setTintColor:[UIColor redColor]];
+        [self.animatedLabelsManager reset];
         
     }
     else{
@@ -207,6 +214,7 @@
     [self updateTimerLabel];
     
     //Set up NSTimer
+    [self.animatedLabelsManager reset];
     [self setUpTimer];
 }
 
@@ -238,7 +246,7 @@
 
 - (void)setUpTimer{
     
-    self.countdown_Timer = [[NSTimer alloc]initWithFireDate:self.datePicker.date interval: 0.5f target:self selector:@selector(fireCountdownTimer) userInfo:nil repeats:YES];
+    self.countdown_Timer = [[NSTimer alloc]initWithFireDate:self.datePicker.date interval: 0.04f target:self selector:@selector(fireCountdownTimer) userInfo:nil repeats:YES];
     
     [[NSRunLoop mainRunLoop] addTimer:self.countdown_Timer forMode:NSRunLoopCommonModes];
 }
@@ -247,8 +255,9 @@
 - (void) fireCountdownTimer{
     
     self.viewTimer.secondsForTimer -=.5;
+    
     if (self.viewTimer.secondsForTimer <=0.0) {
-        
+        [self.animatedLabelsManager.smallLabel setProgress:1.0];
         [self invalidateTimer];
         self.timerLabel.text = @"00:00:00";
         [self reset];
@@ -257,7 +266,7 @@
     else{
         
         [self updateTimerLabel];
-        
+        [self.animatedLabelsManager update];
     }
 }
 
