@@ -11,7 +11,7 @@
 #import "SWViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "SWTableViewController.h"
-#import "SWStopWatchHandler.h"
+
 
 CFTimeInterval const frameInterval = 1.0/60.0f;
 

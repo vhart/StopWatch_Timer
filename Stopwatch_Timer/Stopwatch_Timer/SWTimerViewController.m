@@ -11,6 +11,7 @@
 
 
 @interface SWTimerViewController ()
+
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (weak, nonatomic) IBOutlet UIView *datePickerView;
 @property (weak, nonatomic) IBOutlet UILabel *timerLabel;
@@ -22,17 +23,21 @@
 @property (weak, nonatomic) IBOutlet UILabel *hoursLabel;
 @property (weak, nonatomic) IBOutlet UIView *play_stopView;
 @property (weak, nonatomic) IBOutlet UIView *tableView_view;
-
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedController;
+
 @property (nonatomic) NSInteger startButtonState;
 @property (nonatomic) NSInteger pauseButtonState;
+
 @property (nonatomic, strong) NSTimer *countdown_Timer;
+
 @property (nonatomic) SWTimerTableViewController *presetsTableView;
+
 @end
 
 @implementation SWTimerViewController
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     [self embedTableView];
     [self buttonsDefaultState];
@@ -57,13 +62,17 @@
 
 - (IBAction)segmentToggled:(UISegmentedControl *)sender {
     
-    if(self.segmentedController.selectedSegmentIndex == 0){
+    if (self.segmentedController.selectedSegmentIndex == 0){
+        
         self.tableView_view.hidden = YES;
         self.play_stopView.hidden = NO;
+        
     }
-    else if(self.segmentedController.selectedSegmentIndex == 1){
+    else if(self.segmentedController.selectedSegmentIndex == 1) {
+        
         self.tableView_view.hidden = NO;
         self.play_stopView.hidden = YES;
+        
     }
     
 }
@@ -91,6 +100,7 @@
 }
 
 - (IBAction)startTimerButton:(UIButton *)sender {
+    
     if(self.startButtonState == -1){
         
         //If there is no timer object then read in the date picker
@@ -113,6 +123,7 @@
 }
 
 - (void) updateAllButtonStates{
+    
     self.startButtonState *= -1;
     self.pauseButtonState *= -1;
 }
@@ -129,13 +140,18 @@
 
 
 -(void)startButtonChanges:(UIButton *)button{
+    
     if(self.startButtonState == 1){
+        
         [button setTitle:@"+1" forState:UIControlStateNormal];
+        
     }
     
     else{
+        
         [button setTitle:@"Start" forState:UIControlStateNormal];
         [button setTintColor:[UIColor greenColor]];
+        
     }
     
 }
@@ -143,10 +159,13 @@
 -(void)pauseButtonChanges:(UIButton *)button{
     
     if (self.pauseButtonState == 1) {
+        
         [button setTitle:@"Pause" forState:UIControlStateNormal];
         [button setTintColor:[UIColor redColor]];
+        
     }
     else{
+        
         [button setTitle:@"Cancel" forState:UIControlStateNormal];
         
     }
@@ -155,9 +174,11 @@
 
 
 - (void) readDatePicker{
+    
     NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
     [outputFormatter setDateFormat:@"k:mm"];
     NSString *time = [outputFormatter stringFromDate:self.datePicker.date];
+    
     self.timerLabel.text = [NSString stringWithFormat:@"%@:00", time];
     [self timerFromTimeString:(NSString*)time];
     
@@ -167,6 +188,7 @@
 }
 
 - (void) countdownBegins{
+    
     if(!self.viewTimer){
         [self readDatePicker];
         
@@ -191,10 +213,12 @@
 
 
 - (void) timerFromTimeString:(NSString *)time{
+    
     NSArray *components = [time componentsSeparatedByString:@":"];
     int hour = [components[0] intValue];
     hour = hour!=24? hour: 0;
     int min = [components[1] intValue];
+    
     self.viewTimer = [[Timer alloc] initWithHours:hour minutes:min];
 }
 
@@ -207,6 +231,7 @@
 
 
 - (void)setUpTimer{
+    
     self.countdown_Timer = [[NSTimer alloc]initWithFireDate:self.datePicker.date interval: 0.5f target:self selector:@selector(fireCountdownTimer) userInfo:nil repeats:YES];
     
     [[NSRunLoop mainRunLoop] addTimer:self.countdown_Timer forMode:NSRunLoopCommonModes];
@@ -214,27 +239,36 @@
 
 
 - (void) fireCountdownTimer{
+    
     self.viewTimer.secondsForTimer -=.5;
     if (self.viewTimer.secondsForTimer <=0.0) {
+        
         [self invalidateTimer];
         self.timerLabel.text = @"00:00:00";
         [self reset];
+        
     }
     else{
+        
         [self updateTimerLabel];
+        
     }
 }
 
 - (void) invalidateTimer{
+    
     if(self.countdown_Timer!=nil){
+        
         [self.countdown_Timer invalidate];
         self.countdown_Timer = nil;
+        
     }
 }
 
 #pragma mark <SWTimerTableDelegate>
 
 - (void) timerSelected:(Timer *)timer{
+    
     [self reset];
     self.segmentedController.selectedSegmentIndex=0;
     [self segmentToggled:self.segmentedController];

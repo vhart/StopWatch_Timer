@@ -12,6 +12,7 @@
 @protocol SWTimerTableViewDelegate <NSObject>
 
 @optional
+
 - (void) timerSelected:(Timer *)timer;
 
 @end

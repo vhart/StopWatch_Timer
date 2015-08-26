@@ -21,10 +21,7 @@
     
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 
 #pragma mark - Table view data source
 
@@ -40,10 +37,12 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LapsCellIdentifier" forIndexPath:indexPath];
+    
     cell.textLabel.text = [NSString stringWithFormat:@"Lap %lu",self.lapTimesArray.count - indexPath.row];
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%.2lf",[self.lapTimesArray[indexPath.row] doubleValue]];
-    // Configure the cell...
+    
     
     return cell;
 }

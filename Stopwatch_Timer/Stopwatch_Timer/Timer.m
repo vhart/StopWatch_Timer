@@ -13,6 +13,7 @@
 - (instancetype) initWithHours:(int)hours minutes:(int)minutes{
     
     if (self = [super init]) {
+        
         double hour_sec = 3600*hours;
         double minutes_sec = 60*minutes;
         self.secondsForTimer = hour_sec + minutes_sec;

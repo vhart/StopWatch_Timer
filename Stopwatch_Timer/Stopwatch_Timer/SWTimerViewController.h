@@ -11,6 +11,7 @@
 #import "SWTimerTableViewController.h"
 
 @interface SWTimerViewController : UIViewController <SWTimerTableViewDelegate>
+
 @property (nonatomic) Timer* viewTimer;
 
 @end
