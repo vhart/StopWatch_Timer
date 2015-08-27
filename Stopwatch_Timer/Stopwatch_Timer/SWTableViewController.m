@@ -42,7 +42,7 @@
     
     cell.textLabel.text = [NSString stringWithFormat:@"Lap %lu",self.lapTimesArray.count - indexPath.row];
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%.2lf",[self.lapTimesArray[indexPath.row] doubleValue]];
-    
+    cell.detailTextLabel.font = [UIFont fontWithName:@"Liquid Crystal" size:17.0];
     
     return cell;
 }

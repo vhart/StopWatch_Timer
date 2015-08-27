@@ -25,6 +25,7 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>MonospaceTypewriter.ttf</string>
+		<string>LiquidCrystal-Normal.otf</string>
 		<string>DroidSansMono.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>

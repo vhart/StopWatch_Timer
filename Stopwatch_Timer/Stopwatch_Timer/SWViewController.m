@@ -126,9 +126,9 @@ CFTimeInterval const frameInterval = 1.0/60.0f;
 
 //START/STOP
 -(void)startButtonSelected {
-    self.startButton.backgroundColor = [UIColor redColor];
+    [self.startButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     [self.startButton setTitle:@"Stop" forState:UIControlStateNormal];
-    self.lapButton.backgroundColor = [UIColor lightGrayColor];
+    
     [self.lapButton setTitle:@"Lap" forState:UIControlStateNormal];
     self.lapButton.enabled = YES;
     
@@ -146,7 +146,8 @@ CFTimeInterval const frameInterval = 1.0/60.0f;
              
 -(void)stopButtonSelected {
     
-    self.startButton.backgroundColor = [UIColor greenColor];
+    [self.startButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
+
     [self.startButton setTitle:@"Start" forState:UIControlStateNormal];
     
     [self.lapButton setTitle:@"Reset" forState:UIControlStateNormal];
