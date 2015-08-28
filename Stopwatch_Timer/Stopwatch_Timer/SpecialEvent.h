@@ -11,6 +11,6 @@
 @interface SpecialEvent : NSObject
 
 @property (nonatomic) NSString* name;
-@property (nonatomic) NSTimeInterval *time;
+@property (nonatomic) NSTimeInterval time;
 
 @end
