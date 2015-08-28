@@ -24,6 +24,7 @@
 
 - (void)viewDidLoad {
     
+    [super viewDidLoad];
     
     
     self.eventsTableView.dataSource = self;
@@ -45,17 +46,31 @@
     NSDateFormatter* halloweenFormatter = [[NSDateFormatter alloc]init];
     [halloweenFormatter setDateFormat:@"yyyy-MM-dd"];
     NSDate *halloweenDate = [halloweenFormatter dateFromString:@"2015-10-31"];
-    
+    halloween.time = [halloweenDate timeIntervalSinceDate:now];
+    [self.eventsArray addObject:halloween];
     
     NSDateFormatter* thanksgivingFormatter = [[NSDateFormatter alloc]init];
     [thanksgivingFormatter setDateFormat:@"yyyy-MM-dd"];
     NSDate *thanksgivingDate = [halloweenFormatter dateFromString:@"2015-11-26"];
+    thanksgiving.time = [thanksgivingDate timeIntervalSinceDate:now];
+     [self.eventsArray addObject:thanksgiving];
     
+    NSDateFormatter* christmasFormatter = [[NSDateFormatter alloc]init];
+    [christmasFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSDate *christmasDate = [halloweenFormatter dateFromString:@"2015-12-25"];
+    christmas.time = [christmasDate timeIntervalSinceDate:now];
+     [self.eventsArray addObject:christmas];
+    
+    NSDateFormatter* newYearFormatter = [[NSDateFormatter alloc]init];
+    [newYearFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSDate *newYearDate = [halloweenFormatter dateFromString:@"2016-01-01"];
+    newYears.time = [newYearDate timeIntervalSinceDate:now];
+     [self.eventsArray addObject:newYears];
     
     
     
     [self setUpEventsTimer];
-    [super viewDidLoad];
+    
     
 }
 -(NSString*)timeFormattedWithValue:(double)value  {
