@@ -19,7 +19,7 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    
+
     self.presetArrayOfDictionaries = [[NSMutableArray alloc] initWithObjects:   @{@"name":@"Running",@"timer":[[Timer alloc]
                                initWithHours:0 minutes:30]},
                            @{@"name":@"Popcorn",@"timer":[[Timer alloc] initWithHours:0 minutes:3]},
@@ -50,18 +50,29 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"presetsCellIdentifier" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"presetsCellIdentifier"];
+    if(indexPath.row == 0){
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"AddNewIdentifier"];
+    }
+    else if (cell == nil){
+        cell = [[UITableViewCell alloc ]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"presetsCellIdentifier"];
+    }
+    
     if (indexPath.row == 0) {
         cell.textLabel.text =  @"Add New Preset!";
-        [cell.textLabel setTextColor:[UIColor greenColor]];
+        //[cell.textLabel setTextColor:[UIColor greenColor]];
+        cell.detailTextLabel.text = @"+";
+        [cell.detailTextLabel setFont:[UIFont systemFontOfSize:28]];
+        [cell.detailTextLabel setTextColor:[UIColor greenColor]];
+        
     }
     else{
-    NSDictionary *temp = self.presetArrayOfDictionaries[indexPath.row -1];
-    NSString *title = [temp objectForKey:@"name"];
-    cell.textLabel.text = title;
-    
-    Timer *timer = [temp objectForKey:@"timer"];
-    cell.detailTextLabel.text = [[timer timeStringFromTimer]substringToIndex:5];
+        NSDictionary *temp = self.presetArrayOfDictionaries[indexPath.row -1];
+        NSString *title = [temp objectForKey:@"name"];
+        cell.textLabel.text = title;
+        [cell.textLabel setTextColor:[UIColor blackColor]];
+        Timer *timer = [temp objectForKey:@"timer"];
+        cell.detailTextLabel.text = [[timer timeStringFromTimer]substringToIndex:5];
     }
     
     return cell;
@@ -69,9 +80,15 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    NSDictionary * temp = [self.presetArrayOfDictionaries objectAtIndex:indexPath.row];
+    if (indexPath.row!=0) {
+    NSDictionary * temp = [self.presetArrayOfDictionaries objectAtIndex:indexPath.row -1];
     [self.delegate dictionaryForTimerSelected:temp];
+     }
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+    
+    
+}
 @end

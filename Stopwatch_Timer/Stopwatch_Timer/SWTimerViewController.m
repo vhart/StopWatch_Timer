@@ -11,7 +11,7 @@
 #import "KAProgressLabel.h"
 #import "LabelAnimator.h"
 
-@interface SWTimerViewController ()
+@interface SWTimerViewController ()<UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (weak, nonatomic) IBOutlet UIView *datePickerView;
@@ -42,10 +42,15 @@
 
 @implementation SWTimerViewController
 
+- (void) viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self embedTableView];
+}
+
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    [self embedTableView];
+    //[self embedTableView];
     [self buttonsDefaultState];
     [self addBorderToButtons];
     self.navigationController.navigationBarHidden = NO;
@@ -216,6 +221,7 @@
     //Set up NSTimer
     [self.animatedLabelsManager reset];
     [self setUpTimer];
+    self.datePickerView.hidden = YES;
 }
 
 
@@ -260,7 +266,8 @@
         [self.animatedLabelsManager.smallLabel setProgress:1.0];
         [self invalidateTimer];
         self.timerLabel.text = @"00:00:00";
-        [self reset];
+        [self deployAlertView];
+        //[self reset];
         
     }
     else{
@@ -270,6 +277,11 @@
     }
 }
 
+-(void) deployAlertView{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Done!!" message:@"Time's up!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+    [alert show];
+    
+}
 - (void) invalidateTimer{
     
     if(self.countdown_Timer!=nil){
@@ -299,5 +311,12 @@
 - (IBAction)playAudioButtonSelected:(UIButton *)sender {
     NSLog(@"audio play, audio stop?");
 }
+
+
+- (void) alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex{
+    
+    [self reset];
+}
+
 
 @end

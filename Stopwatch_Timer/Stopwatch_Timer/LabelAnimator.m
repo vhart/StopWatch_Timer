@@ -62,12 +62,12 @@
     [self setUpDimensionsForLabel:self.mediumLabel trackWidth:6.0f progressWidth:8.0f roundedCornersWidth:8.0f];
     [self setUpDimensionsForLabel:self.largeLabel trackWidth:6.0f progressWidth:8.0f roundedCornersWidth:8.0f];
     
-    [self setUpLabel:self.smallLabel withColorsProgressColor:UIColorFromRGB(0x53CFF5) trackColor:UIColorFromRGBWithAlpha(0x5882DB, .7) fillColor:[UIColor clearColor]];
+    [self setUpLabel:self.smallLabel withColorsProgressColor:UIColorFromRGB(0x53CFF5) trackColor:UIColorFromRGBWithAlpha(0x5882DB, 1) fillColor:[UIColor clearColor]];
     
-    [self setUpLabel:self.mediumLabel withColorsProgressColor:UIColorFromRGB(0x1BEF00) trackColor:UIColorFromRGBWithAlpha(0x58DB70, .7) fillColor:[UIColor clearColor]];
-    
-    [self setUpLabel:self.largeLabel withColorsProgressColor:UIColorFromRGB(0xFF0000) trackColor:UIColorFromRGBWithAlpha(0xFF9494, .7) fillColor:[UIColor clearColor]];
-    
+    [self setUpLabel:self.mediumLabel withColorsProgressColor:UIColorFromRGB(0x25EF00) trackColor:UIColorFromRGBWithAlpha(0x82FA86, .7) fillColor:[UIColor clearColor]];
+   
+    [self setUpLabel:self.largeLabel withColorsProgressColor:UIColorFromRGB(0xFF0000) trackColor:UIColorFromRGBWithAlpha(0xFF9494, 1) fillColor:[UIColor clearColor]];
+   // 0xFF9494
 }
 
 - (void)reset{
