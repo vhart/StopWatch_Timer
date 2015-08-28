@@ -13,7 +13,7 @@
 
 @optional
 
-- (void) timerSelected:(Timer *)timer;
+- (void) dictionaryForTimerSelected:(NSDictionary *)dictionary;
 
 @end
 
@@ -21,6 +21,7 @@
 
 @property (nonatomic) NSMutableArray *presetArrayOfDictionaries;
 @property (nonatomic,weak) id<SWTimerTableViewDelegate>delegate;
+
 @end
 
 

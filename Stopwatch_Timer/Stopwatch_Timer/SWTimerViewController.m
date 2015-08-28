@@ -282,13 +282,14 @@
 
 #pragma mark <SWTimerTableDelegate>
 
-- (void) timerSelected:(Timer *)timer{
+- (void) dictionaryForTimerSelected:(NSDictionary *)dictionary{
     
     [self reset];
     self.segmentedController.selectedSegmentIndex=0;
     [self segmentToggled:self.segmentedController];
     
-    self.viewTimer = [[Timer alloc]initWithTimer:timer];
+    self.viewTimer = [[Timer alloc]initWithTimer:[dictionary objectForKey:@"timer"]];
+    self.navigationItem.title = [dictionary objectForKey:@"name"];
     [self buttonsDefaultState];
     [self countdownBegins];
 }
