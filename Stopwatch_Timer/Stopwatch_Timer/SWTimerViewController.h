@@ -9,8 +9,9 @@
 #import "Timer.h"
 #import <UIKit/UIKit.h>
 #import "SWTimerTableViewController.h"
+#import "SWAudioTableViewController.h"
 
-@interface SWTimerViewController : UIViewController <SWTimerTableViewDelegate>
+@interface SWTimerViewController : UIViewController <SWTimerTableViewDelegate, SWAudioSelectorDelegate>
 
 @property (nonatomic) Timer* viewTimer;
 

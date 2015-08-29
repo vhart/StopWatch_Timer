@@ -27,8 +27,10 @@
     [super viewDidLoad];
     
     
+    
     self.eventsTableView.dataSource = self;
     self.eventsTableView.delegate = self;
+    self.eventNameField.delegate = self;
     self.eventsArray = [[NSMutableArray alloc] init];
     
     NSDate *now = [NSDate date];
@@ -138,6 +140,7 @@
     newEvent.name = self.eventNameField.text;
     [self.eventsArray addObject:newEvent];
     [self.eventsTableView reloadData];
+    [self.eventNameField resignFirstResponder];
 }
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
     [self.eventNameField resignFirstResponder];

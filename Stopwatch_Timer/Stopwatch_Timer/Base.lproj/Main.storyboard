@@ -262,7 +262,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="adb-hY-WPr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1790" y="2148"/>
+            <point key="canvasLocation" x="-1046" y="2932"/>
         </scene>
         <!--Timer View Controller-->
         <scene sceneID="Pz8-bl-jxa">
@@ -305,6 +305,7 @@
                                         </state>
                                         <connections>
                                             <action selector="musicViewSelected:" destination="tHb-Xa-7Hy" eventType="touchUpInside" id="C5F-S7-Ey4"/>
+                                            <segue destination="ZOC-Pp-bI2" kind="presentation" id="GAh-FB-NGI"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O9B-PO-Hrv">
