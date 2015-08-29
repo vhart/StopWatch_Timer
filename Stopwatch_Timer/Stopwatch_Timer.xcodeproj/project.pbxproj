@@ -148,11 +148,11 @@
 		C769A6D71B878F8600F61421 /* Stopwatch_Timer */ = {
 			isa = PBXGroup;
 			children = (
-				5D2A5F761B8FB4400052A682 /* SpecialEvents */,
-				C769A7391B890D3B00F61421 /* Stopwatch */,
 				C769A6DC1B878F8600F61421 /* AppDelegate.h */,
 				C769A6DD1B878F8600F61421 /* AppDelegate.m */,
 				C769A6E21B878F8600F61421 /* Main.storyboard */,
+				5D2A5F761B8FB4400052A682 /* SpecialEvents */,
+				C769A7391B890D3B00F61421 /* Stopwatch */,
 				C769A7381B890D2D00F61421 /* Timer */,
 				C769A6E51B878F8600F61421 /* Images.xcassets */,
 				C769A6E71B878F8600F61421 /* LaunchScreen.xib */,
