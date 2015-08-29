@@ -118,15 +118,19 @@
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return YES if you want the specified item to be editable.
-    if (indexPath.row == 0 || (indexPath.row >0 && indexPath.row<=self.presetArrayOfDictionaries.count-7)) {
-        return NO;
+    NSLog(@"%lu",indexPath.row);
+    if (0 < indexPath.row && indexPath.row<[self.presetArrayOfDictionaries count]) {
+        
+        return YES;
     }
-    return YES;
+    
+    return NO;
 }
 
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self.presetArrayOfDictionaries removeObjectAtIndex:indexPath.row-1];
        //[self.presetArrayOfDictionaries ]
     }
 }
