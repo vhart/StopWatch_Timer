@@ -94,7 +94,7 @@
     
     
     
-    return [NSString stringWithFormat:@"%.2d:%.2d:%.2d:%d", DD, HH, MM, SS];
+    return [NSString stringWithFormat:@"%.2d:%.2d:%.2d:%.2d", DD, HH, MM, SS];
     
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -139,7 +139,10 @@
     [self.eventsArray addObject:newEvent];
     [self.eventsTableView reloadData];
 }
-
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [self.eventNameField resignFirstResponder];
+    return YES;
+}
 
 
 

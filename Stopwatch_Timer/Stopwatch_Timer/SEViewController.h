@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "SpecialEvent.h"
 
-@interface SEViewController : UIViewController
+@interface SEViewController : UIViewController <UITextFieldDelegate>
 
 @end
