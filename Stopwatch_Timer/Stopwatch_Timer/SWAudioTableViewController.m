@@ -12,7 +12,9 @@
 @interface SWAudioTableViewController ()
 
 @property (nonatomic) NSArray *audioNames;
+@property (nonatomic) NSIndexPath *selectionIndexPath;
 @property (nonatomic) AVAudioPlayer* audioSampler;
+@property (nonatomic) NSString* stringToPass;
 
 @end
 
@@ -20,7 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.audioNames = [[NSArray alloc] initWithObjects:@"Butt", @"HeavyAlarm", @"ShortAlarm", @"Klaxon", @"Warning", nil];
+    self.audioNames = [[NSArray alloc] initWithObjects:@"Beeps", @"HeavyAlarm", @"ShortAlarm", @"Klaxon", @"Warning", nil];
    
 }
 
@@ -38,16 +40,41 @@
     return self.audioNames.count;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.audioSampler stop];
+    NSString* audioString = [NSString stringWithFormat:@"%@/%@.mp3", [[NSBundle mainBundle] resourcePath], self.audioNames[indexPath.row]];
+    
+    NSURL *fileURL = [[NSURL alloc] initFileURLWithPath: audioString];
+    
+    self.audioSampler =
+    [[AVAudioPlayer alloc] initWithContentsOfURL: fileURL
+                                           error: nil];
+    [self.audioSampler play];
+    
+    self.selectionIndexPath = indexPath;
+    self.stringToPass = self.audioNames[indexPath.row];
+    [self.tableView reloadData];
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AudioTableViewCell" forIndexPath:indexPath];
     
     cell.detailTextLabel.text = self.audioNames[indexPath.row];
+    
+    if ([self.selectionIndexPath isEqual:indexPath]) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
    
     
     return cell;
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    [self.delegate didSelectAudioFilename:self.stringToPass];
+    NSLog(@"%@", self.stringToPass);
+}
 
 
 @end
