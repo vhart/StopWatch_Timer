@@ -11,6 +11,7 @@
 #import "KAProgressLabel.h"
 #import "LabelAnimator.h"
 
+
 @interface SWTimerViewController ()<UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
@@ -37,6 +38,9 @@
 @property (nonatomic) SWTimerTableViewController *presetsTableView;
 
 @property (nonatomic) LabelAnimator * animatedLabelsManager;
+
+@property (nonatomic) AVAudioPlayer* timerPlayer;
+
 
 @end
 
@@ -321,6 +325,17 @@
 - (void) alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex{
     
     [self reset];
+}
+
+#pragma mark <SWAudioSelectorDelegate>
+
+-(IBAction)audioButton:(UIButton*)sender {
+    
+}
+
+-(void)didSelectAudioFile:(NSString*)string {
+    
+    
 }
 
 

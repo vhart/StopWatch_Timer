@@ -12,7 +12,7 @@
 
 @optional
 
-- (NSString*)didSelectAudioFile;
+- (void)didSelectAudioFile:(NSString*)string;
 
 @end
 

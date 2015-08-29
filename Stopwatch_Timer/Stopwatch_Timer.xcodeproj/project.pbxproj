@@ -199,12 +199,12 @@
 				C769A73B1B890E0200F61421 /* SWTimerTableViewController.m */,
 				C769A73D1B890E2100F61421 /* SWTimerViewController.h */,
 				C769A73E1B890E2100F61421 /* SWTimerViewController.m */,
+				5D2A5F801B9200180052A682 /* SWAudioTableViewController.h */,
+				5D2A5F811B9200180052A682 /* SWAudioTableViewController.m */,
 				C769A7401B890E4200F61421 /* Timer.h */,
 				C769A7411B890E4200F61421 /* Timer.m */,
 				C78ED8B91B8D4B61000BA969 /* LabelAnimator.h */,
 				C78ED8BA1B8D4B61000BA969 /* LabelAnimator.m */,
-				5D2A5F801B9200180052A682 /* SWAudioTableViewController.h */,
-				5D2A5F811B9200180052A682 /* SWAudioTableViewController.m */,
 			);
 			name = Timer;
 			sourceTree = "<group>";
