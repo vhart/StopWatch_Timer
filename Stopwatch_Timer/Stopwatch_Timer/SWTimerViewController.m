@@ -53,9 +53,9 @@
 }
 - (void) viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    if (self.presetsTableView == nil) {
-        [self embedTableView];
-    }
+    //if (self.presetsTableView == nil) {
+    [self embedTableView];
+    //}
     
 }
 
