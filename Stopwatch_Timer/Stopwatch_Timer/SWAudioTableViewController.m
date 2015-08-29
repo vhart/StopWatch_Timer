@@ -53,6 +53,7 @@
     
     self.selectionIndexPath = indexPath;
     self.stringToPass = self.audioNames[indexPath.row];
+    NSLog(@"%@", self.stringToPass);
     [self.tableView reloadData];
 }
 
@@ -71,9 +72,13 @@
     return cell;
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+-(void)viewWillDisappear:(BOOL)animated {
+    
+    
+    
     [self.delegate didSelectAudioFilename:self.stringToPass];
     NSLog(@"%@", self.stringToPass);
+    
 }
 
 

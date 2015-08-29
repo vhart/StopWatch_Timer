@@ -337,7 +337,7 @@
 
 }
 
--(void)didSelectAudioFile:(NSString*)string {
+-(void)didSelectAudioFilename:(NSString*)string {
     
     NSString* audioString = [NSString stringWithFormat:@"%@/%@.mp3", [[NSBundle mainBundle] resourcePath], string];
     

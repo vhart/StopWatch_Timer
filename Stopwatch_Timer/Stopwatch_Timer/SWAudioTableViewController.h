@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class SWAudioTableViewController;
 @protocol SWAudioSelectorDelegate <NSObject>
 
 @optional
 
--(void) didSelectAudioFilename:(NSString*)string;
+-(void)didSelectAudioFilename:(NSString*)string;
 
 @end
 
