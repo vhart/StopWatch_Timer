@@ -45,24 +45,22 @@
 @end
 
 @implementation SWTimerViewController
-- (void) viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    if (self.presetsTableView != nil) {
-        [self.presetsTableView.tableView reloadData];
-    }
-}
-- (void) viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    //if (self.presetsTableView == nil) {
-    [self embedTableView];
-    //}
+
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    self.presetsTableView.view.frame = self.tableView_view.bounds;
     
+    // this is not beautiful but its the best of the hack options.
+    // make sure the content inset (inside padding) is set to 0 all
+    // the way around
+    ((UITableView *)self.presetsTableView.view).contentInset = UIEdgeInsetsZero;
 }
 
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    //[self embedTableView];
+    [self embedTableView];
     [self buttonsDefaultState];
     [self addBorderToButtons];
     self.navigationController.navigationBarHidden = NO;
@@ -71,7 +69,7 @@
     self.navigationItem.title = @"Timer";
     self.animatedLabelsManager = [[LabelAnimator alloc] initWithLabels:self.secondsLabel medium:self.minutesLabel large:self.hoursLabel];
     [self.animatedLabelsManager setUpAllPropertyLabels];
-
+    
     
 }
 

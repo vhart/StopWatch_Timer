@@ -20,6 +20,8 @@
     
     [super viewDidLoad];
     
+    self.tableView.allowsMultipleSelectionDuringEditing = NO;
+    
     self.presetArrayOfDictionaries = [[NSMutableArray alloc] initWithObjects:   @{@"name":@"Running",@"timer":[[Timer alloc]
                                                                                                                initWithHours:0 minutes:30]},
                                       @{@"name":@"Popcorn",@"timer":[[Timer alloc] initWithHours:0 minutes:3]},
@@ -112,6 +114,21 @@
                                                 }
      atIndex:0];
     [self.tableView reloadData];
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return YES if you want the specified item to be editable.
+    if (indexPath.row == 0 || (indexPath.row >0 && indexPath.row<=self.presetArrayOfDictionaries.count-7)) {
+        return NO;
+    }
+    return YES;
+}
+
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+       //[self.presetArrayOfDictionaries ]
+    }
 }
 
 
