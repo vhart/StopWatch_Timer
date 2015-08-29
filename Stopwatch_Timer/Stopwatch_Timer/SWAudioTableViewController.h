@@ -12,10 +12,12 @@
 
 @optional
 
-- (void)didSelectAudioFile:(NSString*)string;
+-(void) didSelectAudioFilename:(NSString*)string;
 
 @end
 
 @interface SWAudioTableViewController : UITableViewController
+
+@property (nonatomic,weak) id<SWAudioSelectorDelegate>delegate;
 
 @end

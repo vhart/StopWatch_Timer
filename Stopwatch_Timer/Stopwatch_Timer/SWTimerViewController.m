@@ -335,7 +335,11 @@
 }
 
 -(void)didSelectAudioFile:(NSString*)string {
+    NSURL *fileURL = [[NSURL alloc] initFileURLWithPath: string];
     
+    self.timerPlayer =
+    [[AVAudioPlayer alloc] initWithContentsOfURL: fileURL
+                                           error: nil];
     
 }
 
