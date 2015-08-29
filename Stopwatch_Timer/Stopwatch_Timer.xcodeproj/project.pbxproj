@@ -28,6 +28,7 @@
 		C769A73F1B890E2100F61421 /* SWTimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C769A73E1B890E2100F61421 /* SWTimerViewController.m */; };
 		C769A7421B890E4200F61421 /* Timer.m in Sources */ = {isa = PBXBuildFile; fileRef = C769A7411B890E4200F61421 /* Timer.m */; };
 		C78ED8BB1B8D4B61000BA969 /* LabelAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = C78ED8BA1B8D4B61000BA969 /* LabelAnimator.m */; };
+		C7E5CEDE1B920BEE00FF4A13 /* AddPresetTimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E5CEDD1B920BEE00FF4A13 /* AddPresetTimerViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,8 @@
 		C769A7411B890E4200F61421 /* Timer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Timer.m; sourceTree = "<group>"; };
 		C78ED8B91B8D4B61000BA969 /* LabelAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelAnimator.h; sourceTree = "<group>"; };
 		C78ED8BA1B8D4B61000BA969 /* LabelAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelAnimator.m; sourceTree = "<group>"; };
+		C7E5CEDC1B920BEE00FF4A13 /* AddPresetTimerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddPresetTimerViewController.h; sourceTree = "<group>"; };
+		C7E5CEDD1B920BEE00FF4A13 /* AddPresetTimerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddPresetTimerViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +193,8 @@
 		C769A7381B890D2D00F61421 /* Timer */ = {
 			isa = PBXGroup;
 			children = (
+				C7E5CEDC1B920BEE00FF4A13 /* AddPresetTimerViewController.h */,
+				C7E5CEDD1B920BEE00FF4A13 /* AddPresetTimerViewController.m */,
 				C769A73A1B890E0200F61421 /* SWTimerTableViewController.h */,
 				C769A73B1B890E0200F61421 /* SWTimerTableViewController.m */,
 				C769A73D1B890E2100F61421 /* SWTimerViewController.h */,
@@ -369,6 +374,7 @@
 				C769A73C1B890E0200F61421 /* SWTimerTableViewController.m in Sources */,
 				C769A6DE1B878F8600F61421 /* AppDelegate.m in Sources */,
 				C769A7421B890E4200F61421 /* Timer.m in Sources */,
+				C7E5CEDE1B920BEE00FF4A13 /* AddPresetTimerViewController.m in Sources */,
 				C769A6DB1B878F8600F61421 /* main.m in Sources */,
 				C78ED8BB1B8D4B61000BA969 /* LabelAnimator.m in Sources */,
 				5D2A5F7C1B8FB4D40052A682 /* SpecialEvent.m in Sources */,

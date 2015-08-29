@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Timer.h"
+#import "AddPresetTimerViewController.h"
 
 @protocol SWTimerTableViewDelegate <NSObject>
 
@@ -17,7 +18,7 @@
 
 @end
 
-@interface SWTimerTableViewController : UITableViewController
+@interface SWTimerTableViewController : UITableViewController <PresetTimerAddedDelegate>
 
 @property (nonatomic) NSMutableArray *presetArrayOfDictionaries;
 @property (nonatomic,weak) id<SWTimerTableViewDelegate>delegate;

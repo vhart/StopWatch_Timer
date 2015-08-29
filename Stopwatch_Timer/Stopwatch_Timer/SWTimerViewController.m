@@ -41,7 +41,12 @@
 @end
 
 @implementation SWTimerViewController
-
+- (void) viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    if (self.presetsTableView != nil) {
+        [self.presetsTableView.tableView reloadData];
+    }
+}
 - (void) viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [self embedTableView];

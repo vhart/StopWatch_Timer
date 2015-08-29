@@ -19,15 +19,15 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-
+    
     self.presetArrayOfDictionaries = [[NSMutableArray alloc] initWithObjects:   @{@"name":@"Running",@"timer":[[Timer alloc]
-                               initWithHours:0 minutes:30]},
-                           @{@"name":@"Popcorn",@"timer":[[Timer alloc] initWithHours:0 minutes:3]},
-                           @{@"name":@"Workout",@"timer":[[Timer alloc] initWithHours:1 minutes:30]},
-                           @{@"name":@"Baked Potato",@"timer":[[Timer alloc] initWithHours:0 minutes:5]},
-                           @{@"name":@"Presentation Timer",@"timer":[[Timer alloc] initWithHours:0 minutes:3]},
-                           @{@"name":@"Blueberry Muffins",@"timer":[[Timer alloc] initWithHours:0 minutes:20]},
-                            @{@"name":@"Pods", @"timer":[[Timer alloc] initWithHours:1 minutes:0]},
+                                                                                                               initWithHours:0 minutes:30]},
+                                      @{@"name":@"Popcorn",@"timer":[[Timer alloc] initWithHours:0 minutes:3]},
+                                      @{@"name":@"Workout",@"timer":[[Timer alloc] initWithHours:1 minutes:30]},
+                                      @{@"name":@"Baked Potato",@"timer":[[Timer alloc] initWithHours:0 minutes:5]},
+                                      @{@"name":@"Presentation Timer",@"timer":[[Timer alloc] initWithHours:0 minutes:3]},
+                                      @{@"name":@"Blueberry Muffins",@"timer":[[Timer alloc] initWithHours:0 minutes:20]},
+                                      @{@"name":@"Pods", @"timer":[[Timer alloc] initWithHours:1 minutes:0]},
                                       nil];
     
 }
@@ -81,14 +81,38 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row!=0) {
-    NSDictionary * temp = [self.presetArrayOfDictionaries objectAtIndex:indexPath.row -1];
-    [self.delegate dictionaryForTimerSelected:temp];
-     }
+        NSDictionary * temp = [self.presetArrayOfDictionaries objectAtIndex:indexPath.row -1];
+        [self.delegate dictionaryForTimerSelected:temp];
+    }
+    else{
+        [self segueToAddingPresetViewController];
+    }
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+-(void)segueToAddingPresetViewController{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
+    AddPresetTimerViewController *addingViewController = [storyboard instantiateViewControllerWithIdentifier:@"addPresetViewController"];
+    addingViewController.delegate = self;
     
+    [self.navigationController pushViewController:addingViewController animated:YES];
     
 }
+
+
+# pragma mark Delegate For Adding Presets View Controller
+- (void) newPresetWithName:(NSString *)name timeString:(NSString *)time{
+    
+    NSArray *timeComp = [time componentsSeparatedByString:@":"];
+    
+    Timer *newTimer = [[Timer alloc] initWithHours:[timeComp[0] intValue] minutes:[timeComp[1] intValue]];
+    [self.presetArrayOfDictionaries insertObject:@{
+                                                @"name":name,
+                                                @"timer":newTimer
+                                                }
+     atIndex:0];
+    [self.tableView reloadData];
+}
+
+
 @end
