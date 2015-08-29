@@ -6,9 +6,13 @@
 //  Copyright (c) 2015 Varindra Hart. All rights reserved.
 //
 
+#import <AVFoundation/AVFoundation.h>
 #import "SWAudioTableViewController.h"
 
 @interface SWAudioTableViewController ()
+
+@property (nonatomic) NSArray *audioNames;
+@property (nonatomic) AVAudioPlayer* audioSampler;
 
 @end
 
@@ -16,33 +20,30 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.audioNames = [[NSArray alloc] initWithObjects:@"Butt", @"HeavyAlarm", @"ShortAlarm", @"Klaxon", @"Warning", nil];
    
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 #warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    
+    return self.audioNames.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AudioTableViewCell" forIndexPath:indexPath];
     
-    // Configure the cell...
+    cell.detailTextLabel.text = self.audioNames[indexPath.row];
+   
     
     return cell;
 }

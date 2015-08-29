@@ -323,7 +323,7 @@
 }
 
 
-- (void) alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex{
+- (void) alertView:(UIAlertView *)alertView didDsmissWithButtonIndex:(NSInteger)buttonIndex{
     
     [self reset];
 }
@@ -331,15 +331,22 @@
 #pragma mark <SWAudioSelectorDelegate>
 
 -(IBAction)audioButton:(UIButton*)sender {
-    
+    SWAudioTableViewController *audioTable = [self.storyboard instantiateViewControllerWithIdentifier:@"AudioTable"];
+    audioTable.delegate = self;
+    [self.navigationController pushViewController:audioTable animated:YES];
+
 }
 
 -(void)didSelectAudioFile:(NSString*)string {
-    NSURL *fileURL = [[NSURL alloc] initFileURLWithPath: string];
+    
+    NSString* audioString = [NSString stringWithFormat:@"%@/%@.mp3", [[NSBundle mainBundle] resourcePath], string];
+    
+    NSURL *fileURL = [[NSURL alloc] initFileURLWithPath: audioString];
     
     self.timerPlayer =
     [[AVAudioPlayer alloc] initWithContentsOfURL: fileURL
                                            error: nil];
+    self.musicChoiceLabel.text = string;
     
 }
 
