@@ -53,7 +53,10 @@
 }
 - (void) viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [self embedTableView];
+    if (self.presetsTableView == nil) {
+        [self embedTableView];
+    }
+    
 }
 
 - (void)viewDidLoad {
@@ -73,8 +76,8 @@
 }
 
 -(void) embedTableView{
-    
-    self.presetsTableView = [[SWTimerTableViewController alloc]init];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    self.presetsTableView = [storyboard instantiateViewControllerWithIdentifier:@"presetsTableView"];
     self.presetsTableView.delegate = self;
     [self addChildViewController:self.presetsTableView];
     
