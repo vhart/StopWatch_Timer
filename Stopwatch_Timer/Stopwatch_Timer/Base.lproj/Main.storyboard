@@ -576,7 +576,7 @@
                                             <constraint firstAttribute="height" constant="50" id="AGA-pt-DVG"/>
                                             <constraint firstAttribute="width" constant="80" id="lTt-Os-Xva"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="LiquidCrystal-Regular" family="Liquid Crystal" pointSize="19"/>
+                                        <fontDescription key="fontDescription" name="LiquidCrystal-Regular" family="Liquid Crystal" pointSize="20"/>
                                         <state key="normal" title="Cancel">
                                             <color key="titleColor" red="1" green="0.043629991850000001" blue="0.16173161420000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
