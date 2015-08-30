@@ -22,8 +22,8 @@
     
     self.tableView.allowsMultipleSelectionDuringEditing = NO;
     
-    self.presetArrayOfDictionaries = [[NSMutableArray alloc] initWithObjects:   @{@"name":@"Running",@"timer":[[Timer alloc]
-                                                                                                               initWithHours:0 minutes:30]},
+    self.presetArrayOfDictionaries = [[NSMutableArray alloc] initWithObjects:
+                                      @{@"name":@"Running",@"timer":[[Timer alloc] initWithHours:0 minutes:30]},
                                       @{@"name":@"Popcorn",@"timer":[[Timer alloc] initWithHours:0 minutes:3]},
                                       @{@"name":@"Workout",@"timer":[[Timer alloc] initWithHours:1 minutes:30]},
                                       @{@"name":@"Baked Potato",@"timer":[[Timer alloc] initWithHours:0 minutes:5]},
@@ -119,7 +119,8 @@
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return YES if you want the specified item to be editable.
     NSLog(@"%lu",indexPath.row);
-    if (0 < indexPath.row && indexPath.row<[self.presetArrayOfDictionaries count]) {
+    if (0 < indexPath.row && indexPath.row <= [self.presetArrayOfDictionaries count]-7) { //&& indexPath.row<[self.presetArrayOfDictionaries count]
+        
         
         return YES;
     }
@@ -131,6 +132,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [self.presetArrayOfDictionaries removeObjectAtIndex:indexPath.row-1];
+        [self.tableView reloadData];
        //[self.presetArrayOfDictionaries ]
     }
 }
