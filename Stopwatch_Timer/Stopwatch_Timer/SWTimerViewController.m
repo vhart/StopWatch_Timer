@@ -333,6 +333,7 @@
 -(IBAction)audioButton:(UIButton*)sender {
     SWAudioTableViewController *audioTable = [self.storyboard instantiateViewControllerWithIdentifier:@"AudioTable"];
     audioTable.delegate = self;
+    audioTable.oldSelection = self.musicChoiceLabel.text;
     [self.navigationController pushViewController:audioTable animated:YES];
 
 }

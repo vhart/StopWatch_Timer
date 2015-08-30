@@ -16,6 +16,7 @@
 @property (nonatomic) AVAudioPlayer* audioSampler;
 @property (nonatomic) NSString* stringToPass;
 
+
 @end
 
 @implementation SWAudioTableViewController
@@ -62,7 +63,7 @@
     
     cell.detailTextLabel.text = self.audioNames[indexPath.row];
     
-    if ([self.selectionIndexPath isEqual:indexPath]) {
+    if ([self.selectionIndexPath isEqual:indexPath] || [self.audioNames[indexPath.row] isEqualToString:self.oldSelection]) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     } else {
         cell.accessoryType = UITableViewCellAccessoryNone;
@@ -74,10 +75,14 @@
 
 -(void)viewWillDisappear:(BOOL)animated {
     
+    if (self.stringToPass == nil) {
+        [self.delegate didSelectAudioFilename:self.oldSelection];
+    } else {
+        [self.delegate didSelectAudioFilename:self.stringToPass];
+
+    }
     
-    
-    [self.delegate didSelectAudioFilename:self.stringToPass];
-    NSLog(@"%@", self.stringToPass);
+        NSLog(@"%@", self.stringToPass);
     
 }
 

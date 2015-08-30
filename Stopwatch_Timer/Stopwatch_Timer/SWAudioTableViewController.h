@@ -20,5 +20,6 @@
 @interface SWAudioTableViewController : UITableViewController
 
 @property (nonatomic,weak) id<SWAudioSelectorDelegate>delegate;
+@property (nonatomic) NSString* oldSelection;
 
 @end
