@@ -34,6 +34,7 @@
 @property (nonatomic) NSInteger pauseButtonState;
 
 @property (nonatomic, strong) NSTimer *countdown_Timer;
+@property (nonatomic) double originalTime;
 
 @property (nonatomic) SWTimerTableViewController *presetsTableView;
 
@@ -64,14 +65,15 @@
     [self buttonsDefaultState];
     [self addBorderToButtons];
     self.navigationController.navigationBarHidden = NO;
-    self.musicLabel.layer.borderColor = [[UIColor purpleColor]CGColor];
+    self.musicLabel.layer.borderColor = [[UIColor blackColor]CGColor];
     self.musicLabel.layer.borderWidth = 1.0f;
     self.navigationItem.title = @"Timer";
     self.animatedLabelsManager = [[LabelAnimator alloc] initWithLabels:self.secondsLabel medium:self.minutesLabel large:self.hoursLabel];
     [self.animatedLabelsManager setUpAllPropertyLabels];
-    
+    [self defaultAudioFile];
     
 }
+
 
 -(void) embedTableView{
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -85,7 +87,79 @@
     [self.presetsTableView willMoveToParentViewController:self];
 }
 
+- (void)defaultAudioFile{
+    NSString* audioString = [NSString stringWithFormat:@"%@/%@.mp3", [[NSBundle mainBundle] resourcePath], @"Warning"];
+    
+    NSURL *fileURL = [[NSURL alloc] initFileURLWithPath: audioString];
+    
+    self.timerPlayer =
+    [[AVAudioPlayer alloc] initWithContentsOfURL: fileURL
+                                           error: nil];
+}
 
+#pragma mark Button State and Button Content Methods
+- (void)buttonsDefaultState{
+    
+    self.startButtonState = -1;
+    self.pauseButtonState = -1;
+    
+}
+
+- (void) updateAllButtonStates{
+    
+    self.startButtonState *= -1;
+    self.pauseButtonState *= -1;
+}
+
+//BORDERS*******************
+- (void) addBorderToButtons{
+    
+    self.startButton.layer.borderWidth = 2.0f;
+    self.startButton.layer.borderColor = [[UIColor blackColor] CGColor];
+    
+    self.pauseButton.layer.borderWidth = 2.0f;
+    self.pauseButton.layer.borderColor = [[UIColor blackColor] CGColor];
+    
+}
+
+//**********************
+// Button Content Methods Below
+
+-(void)startButtonChanges:(UIButton *)button{
+    
+    if(self.startButtonState == 1){
+        
+        [button setTitle:@"+1" forState:UIControlStateNormal];
+        
+    }
+    
+    else{
+        
+        [button setTitle:@"Start" forState:UIControlStateNormal];
+        [button setTintColor:[UIColor greenColor]];
+        
+    }
+    
+}
+
+
+-(void)pauseButtonChanges:(UIButton *)button{
+    
+    if (self.pauseButtonState == 1) {
+        
+        [button setTitle:@"Pause" forState:UIControlStateNormal];
+        [button setTintColor:[UIColor redColor]];
+        [self.animatedLabelsManager reset];
+        
+    }
+    else{
+        
+        [button setTitle:@"Cancel" forState:UIControlStateNormal];
+        
+    }
+    
+}
+//*******************************************************
 
 - (IBAction)segmentToggled:(UISegmentedControl *)sender {
     
@@ -104,6 +178,8 @@
     
 }
 
+//*************************************
+
 - (IBAction)pauseButton:(UIButton *)sender {
     
     if(self.pauseButtonState == -1){
@@ -111,6 +187,7 @@
         //Cancelling
         [self reset];
         self.datePickerView.hidden=NO;
+        self.originalTime = 0;
         
     }
     else{
@@ -135,72 +212,15 @@
     }
     else{
         self.viewTimer.secondsForTimer +=60;
+        self.originalTime += 60;
         [self updateTimerLabel];
     }
     
 }
 
+//****************************************************
 
-//start and pause (cancel) should go to default states
-- (void)buttonsDefaultState{
-    
-    self.startButtonState = -1;
-    self.pauseButtonState = -1;
-    
-}
-
-- (void) updateAllButtonStates{
-    
-    self.startButtonState *= -1;
-    self.pauseButtonState *= -1;
-}
-
-- (void) addBorderToButtons{
-    
-    self.startButton.layer.borderWidth = 2.0f;
-    self.startButton.layer.borderColor = [[UIColor blackColor] CGColor];
-    
-    self.pauseButton.layer.borderWidth = 2.0f;
-    self.pauseButton.layer.borderColor = [[UIColor blackColor] CGColor];
-    
-}
-
-
--(void)startButtonChanges:(UIButton *)button{
-    
-    if(self.startButtonState == 1){
-        
-        [button setTitle:@"+1" forState:UIControlStateNormal];
-        
-    }
-    
-    else{
-        
-        [button setTitle:@"Start" forState:UIControlStateNormal];
-        [button setTintColor:[UIColor greenColor]];
-        
-    }
-    
-}
-
--(void)pauseButtonChanges:(UIButton *)button{
-    
-    if (self.pauseButtonState == 1) {
-        
-        [button setTitle:@"Pause" forState:UIControlStateNormal];
-        [button setTintColor:[UIColor redColor]];
-        [self.animatedLabelsManager reset];
-        
-    }
-    else{
-        
-        [button setTitle:@"Cancel" forState:UIControlStateNormal];
-        
-    }
-    
-}
-
-
+#pragma mark Reading Date Picker
 - (void) readDatePicker{
     
     NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
@@ -214,7 +234,7 @@
     
     
 }
-
+//BEGIN COUNTDOWN
 - (void) countdownBegins{
     
     if(!self.viewTimer){
@@ -234,13 +254,9 @@
     self.datePickerView.hidden = YES;
 }
 
+//*************************************************
 
-- (void)reset{
-    [self invalidateTimer];
-    self.viewTimer = nil;
-    
-}
-
+#pragma mark Timer Object
 
 - (void) timerFromTimeString:(NSString *)time{
     
@@ -250,32 +266,37 @@
     int min = [components[1] intValue];
     
     self.viewTimer = [[Timer alloc] initWithHours:hour minutes:min];
+    self.originalTime = self.viewTimer.secondsForTimer;
 }
 
-
+//Timer Label
 - (void) updateTimerLabel{
     
     self.timerLabel.text = [self.viewTimer timeStringFromTimer];
     
 }
 
+//*****************
+#pragma mark Setting up NSTimer and Selector
 
 - (void)setUpTimer{
     
     self.countdown_Timer = [[NSTimer alloc]initWithFireDate:self.datePicker.date interval: 0.04f target:self selector:@selector(fireCountdownTimer) userInfo:nil repeats:YES];
     
     [[NSRunLoop mainRunLoop] addTimer:self.countdown_Timer forMode:NSRunLoopCommonModes];
+    
 }
 
 
 - (void) fireCountdownTimer{
     
-    self.viewTimer.secondsForTimer -=.5;
+    self.viewTimer.secondsForTimer -=.04;
     
     if (self.viewTimer.secondsForTimer <=0.0) {
-        [self.animatedLabelsManager.smallLabel setProgress:1.0];
+        [self.animatedLabelsManager.smallLabel setProgress:0.0];
         [self invalidateTimer];
         self.timerLabel.text = @"00:00:00";
+        [self.timerPlayer play];
         [self deployAlertView];
         //[self reset];
         
@@ -283,15 +304,21 @@
     else{
         
         [self updateTimerLabel];
-        [self.animatedLabelsManager update];
+        [self.animatedLabelsManager updateWithOriginal:self.originalTime new:self.viewTimer.secondsForTimer];
     }
 }
 
--(void) deployAlertView{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Done!!" message:@"Time's up!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
-    [alert show];
+//*************************************
+
+# pragma  Reset Methods
+
+- (void)reset{
+    [self invalidateTimer];
+    self.viewTimer = nil;
     
 }
+
+
 - (void) invalidateTimer{
     
     if(self.countdown_Timer!=nil){
@@ -301,6 +328,57 @@
         
     }
 }
+//*************************************
+#pragma UIAlertView Implementation and Delegate methods
+-(void) deployAlertView{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Done!!" message:@"Time's up!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+    alert.delegate = self;
+    [alert show];
+    
+}
+
+
+- (void) alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex{
+    NSLog(@"logging");
+    if ([self.timerPlayer isPlaying]){
+        [self.timerPlayer stop];
+    }
+    [self reset];
+    [self buttonsDefaultState];
+    [self startButtonChanges:self.startButton];
+    [self pauseButtonChanges:self.pauseButton];
+    self.originalTime = 0;
+    self.datePickerView.hidden = NO;
+}
+
+//*************************************
+
+#pragma mark Playing and Stopping Audio Player
+
+- (IBAction)playAudioButtonSelected:(UIButton *)sender {
+    
+    NSLog(@"audio play, audio stop?");
+    if([self.timerPlayer isPlaying]){
+        [self.timerPlayer stop];
+        
+    }
+    else{
+        
+        NSTimer *timer = [NSTimer timerWithTimeInterval:2.0f target:self selector:@selector(stopPlaying:) userInfo:nil repeats:NO];
+        [self.timerPlayer play];
+        [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+        
+    }
+}
+
+- (void) stopPlaying:(NSTimer *)timer{
+    [timer invalidate];
+    timer = nil;
+    if ([self.timerPlayer isPlaying]){
+        [self.timerPlayer stop];
+    }
+}
+//**************************************
 
 #pragma mark <SWTimerTableDelegate>
 
@@ -311,32 +389,14 @@
     [self segmentToggled:self.segmentedController];
     
     self.viewTimer = [[Timer alloc]initWithTimer:[dictionary objectForKey:@"timer"]];
+    self.originalTime = self.viewTimer.secondsForTimer;
     self.navigationItem.title = [dictionary objectForKey:@"name"];
     [self buttonsDefaultState];
     [self countdownBegins];
 }
-- (IBAction)musicViewSelected:(UIButton *)sender {
-    NSLog(@"Music view selected");
-}
-- (IBAction)playAudioButtonSelected:(UIButton *)sender {
-    NSLog(@"audio play, audio stop?");
-}
 
 
-- (void) alertView:(UIAlertView *)alertView didDsmissWithButtonIndex:(NSInteger)buttonIndex{
-    
-    [self reset];
-}
-
-#pragma mark <SWAudioSelectorDelegate>
-
--(IBAction)audioButton:(UIButton*)sender {
-    SWAudioTableViewController *audioTable = [self.storyboard instantiateViewControllerWithIdentifier:@"AudioTable"];
-    audioTable.delegate = self;
-    audioTable.oldSelection = self.musicChoiceLabel.text;
-    [self.navigationController pushViewController:audioTable animated:YES];
-
-}
+#pragma mark <SWAudioSelectorDelegate> and Transition to SWAudioTableViewContoller
 
 -(void)didSelectAudioFilename:(NSString*)string {
     
@@ -351,6 +411,20 @@
     
     
 }
+
+//************************************************
+
+#pragma mark Transition to SWAudioTableViewController
+
+-(IBAction)audioButton:(UIButton*)sender {
+    SWAudioTableViewController *audioTable = [self.storyboard instantiateViewControllerWithIdentifier:@"AudioTable"];
+    audioTable.delegate = self;
+    audioTable.oldSelection = self.musicChoiceLabel.text;
+    [self.navigationController pushViewController:audioTable animated:YES];
+
+}
+
+//
 
 
 @end

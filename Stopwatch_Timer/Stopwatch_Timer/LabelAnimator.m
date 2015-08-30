@@ -96,4 +96,31 @@
     
 }
 
+- (void)updateWithOriginal:(double)old new:(double)newValue{
+    
+    CGFloat perc = newValue/old;
+    
+    if (perc >= .6667) {
+        [self.smallLabel setProgress:1.0];
+        [self.mediumLabel setProgress:1.0];
+        [self.largeLabel setProgress: perc>=1? 1 : ((perc - .6667)/.3333)];
+        return;
+    }
+    
+    if (perc >.3334) {
+        [self.smallLabel setProgress:1.0];
+        [self.mediumLabel setProgress:((perc - .3333)/.3333)];
+        [self.largeLabel setProgress:0];
+        return;
+    }
+    
+    if (perc <= .3334) {
+        [self.smallLabel setProgress: perc>=0? ((perc)/.3334) : 0];
+        [self.mediumLabel setProgress:0];
+        [self.largeLabel setProgress:0];
+        return;
+    }
+    
+}
+
 @end

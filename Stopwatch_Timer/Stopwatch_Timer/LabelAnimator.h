@@ -47,6 +47,6 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
 
 //customize this method to load up your progress bars. Will ONLY work for circles that are set to the label properties above. 
 - (void)update;
-
+- (void)updateWithOriginal:(double)old new:(double)newValue;
 - (void)reset;
 @end
