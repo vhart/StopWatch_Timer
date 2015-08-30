@@ -26,7 +26,7 @@
     
     [super viewDidLoad];
     
-    
+    self.eventDatePicker.minimumDate = [NSDate dateWithTimeInterval:(24*60*60) sinceDate:[NSDate date]];;
     
     self.eventsTableView.dataSource = self;
     self.eventsTableView.delegate = self;
@@ -134,14 +134,23 @@
 }
 - (IBAction)addEvent:(id)sender {
     
-    SpecialEvent *newEvent = [[SpecialEvent alloc]init ];
-    NSDate* now = [NSDate date];
-    newEvent.time = [self.eventDatePicker.date timeIntervalSinceDate:now];
-    newEvent.name = self.eventNameField.text;
-    [self.eventsArray addObject:newEvent];
-    [self.eventsTableView reloadData];
-    [self.eventNameField resignFirstResponder];
+    if ([self.eventNameField.text isEqualToString:@""]) {
+        
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Please select a name" message:@"You must select a name for your event." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        [alert show];
+    } else {
+        SpecialEvent *newEvent = [[SpecialEvent alloc]init ];
+        NSDate* now = [NSDate date];
+        newEvent.time = [self.eventDatePicker.date timeIntervalSinceDate:now];
+        newEvent.name = self.eventNameField.text;
+        [self.eventsArray addObject:newEvent];
+        [self.eventsTableView reloadData];
+        [self.eventNameField resignFirstResponder];
+
+    }
+    
 }
+
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
     [self.eventNameField resignFirstResponder];
     return YES;
