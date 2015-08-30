@@ -40,6 +40,8 @@ CFTimeInterval const frameInterval = 1.0/60.0f;
     [self setUpButtons];
    
     [self embedTableViewController];
+    
+    self.navigationItem.title = @"Stopwatch";
 }
 
 -(void)setUpButtons{
