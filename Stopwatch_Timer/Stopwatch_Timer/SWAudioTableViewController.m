@@ -54,6 +54,7 @@
     
     self.selectionIndexPath = indexPath;
     self.stringToPass = self.audioNames[indexPath.row];
+    self.oldSelection = self.audioNames[indexPath.row];
     NSLog(@"%@", self.stringToPass);
     [self.tableView reloadData];
 }
