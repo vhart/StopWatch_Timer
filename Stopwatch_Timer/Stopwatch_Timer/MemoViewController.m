@@ -85,6 +85,22 @@
     return YES;
 }
 
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    
+    return YES;
+}
+
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self.event.memos removeObjectAtIndex:indexPath.row];
+        [self.eventsTableView reloadData];
+        //[self.presetArrayOfDictionaries ]
+    }
+}
+
 /*
 #pragma mark - Navigation
 
