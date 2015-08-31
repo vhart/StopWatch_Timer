@@ -22,6 +22,7 @@
 		5DCD9DB61B926AB0009F54CE /* ShortAlarm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5DCD9DB11B926AB0009F54CE /* ShortAlarm.mp3 */; };
 		5DCD9DB71B926AB0009F54CE /* Warning.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5DCD9DB21B926AB0009F54CE /* Warning.mp3 */; };
 		C71882FD1B8E26B9004D0A26 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C71882FC1B8E26B9004D0A26 /* AVFoundation.framework */; };
+		C75F426A1B94DF8C0094B9CE /* MemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C75F42691B94DF8C0094B9CE /* MemoViewController.m */; };
 		C769A6DB1B878F8600F61421 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C769A6DA1B878F8600F61421 /* main.m */; };
 		C769A6DE1B878F8600F61421 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C769A6DD1B878F8600F61421 /* AppDelegate.m */; };
 		C769A6E41B878F8600F61421 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C769A6E21B878F8600F61421 /* Main.storyboard */; };
@@ -68,6 +69,8 @@
 		5DCD9DB21B926AB0009F54CE /* Warning.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Warning.mp3; sourceTree = "<group>"; };
 		94054B5C1695EB8765FB4257 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C71882FC1B8E26B9004D0A26 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		C75F42681B94DF8C0094B9CE /* MemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemoViewController.h; sourceTree = "<group>"; };
+		C75F42691B94DF8C0094B9CE /* MemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemoViewController.m; sourceTree = "<group>"; };
 		C769A6D51B878F8600F61421 /* Stopwatch_Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stopwatch_Timer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C769A6D91B878F8600F61421 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C769A6DA1B878F8600F61421 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -117,6 +120,8 @@
 		5D2A5F761B8FB4400052A682 /* SpecialEvents */ = {
 			isa = PBXGroup;
 			children = (
+				C75F42681B94DF8C0094B9CE /* MemoViewController.h */,
+				C75F42691B94DF8C0094B9CE /* MemoViewController.m */,
 				5D2A5F771B8FB4720052A682 /* SEViewController.h */,
 				5D2A5F781B8FB4720052A682 /* SEViewController.m */,
 				5D2A5F7A1B8FB4D40052A682 /* SpecialEvent.h */,
@@ -393,6 +398,7 @@
 				5D0DE17B1B87966E0030AF64 /* SWViewController.m in Sources */,
 				C769A73C1B890E0200F61421 /* SWTimerTableViewController.m in Sources */,
 				C769A6DE1B878F8600F61421 /* AppDelegate.m in Sources */,
+				C75F426A1B94DF8C0094B9CE /* MemoViewController.m in Sources */,
 				C769A7421B890E4200F61421 /* Timer.m in Sources */,
 				C7E5CEDE1B920BEE00FF4A13 /* AddPresetTimerViewController.m in Sources */,
 				C769A6DB1B878F8600F61421 /* main.m in Sources */,

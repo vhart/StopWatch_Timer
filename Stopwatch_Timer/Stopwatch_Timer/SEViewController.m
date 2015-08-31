@@ -7,6 +7,7 @@
 //
 
 #import "SEViewController.h"
+#import "MemoViewController.h"
 
 
 @interface SEViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -25,6 +26,8 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    self.navigationItem.title = @"Special Events Countdown";
+    self.eventsTableView.allowsMultipleSelectionDuringEditing = NO;
     
     self.eventDatePicker.minimumDate = [NSDate dateWithTimeInterval:(24*60*60) sinceDate:[NSDate date]];;
     
@@ -44,6 +47,7 @@
     thanksgiving.name = @"Thanksgiving";
     christmas.name = @"Christmas";
     newYears.name = @"New Years";
+    
     
     NSDateFormatter* halloweenFormatter = [[NSDateFormatter alloc]init];
     [halloweenFormatter setDateFormat:@"yyyy-MM-dd"];
@@ -116,6 +120,13 @@
     cell.textLabel.text = eventForCell.name;
     cell.detailTextLabel.text = [self timeFormattedWithValue:eventForCell.time];
     
+    if (indexPath.row>=[self.eventsArray count]-4) {
+        [cell.textLabel setTextColor:[UIColor colorWithRed:80.0f/255.0f green:170.0f/255.0f blue:255.0f/255.0f alpha:1.0f]];
+    }
+    else{
+        [cell.textLabel setTextColor:[UIColor redColor]];
+    }
+
     
     return cell;
 }
@@ -143,9 +154,11 @@
         NSDate* now = [NSDate date];
         newEvent.time = [self.eventDatePicker.date timeIntervalSinceDate:now];
         newEvent.name = self.eventNameField.text;
-        [self.eventsArray addObject:newEvent];
-        [self.eventsTableView reloadData];
+        
+        
+        [self.eventsArray insertObject:newEvent atIndex:0];
         [self.eventNameField resignFirstResponder];
+        [self.eventsTableView reloadData];
 
     }
     
@@ -157,5 +170,31 @@
 }
 
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return YES if you want the specified item to be editable.
+    NSLog(@"%lu",indexPath.row);
+    if ([self.eventsArray count]-4 > indexPath.row ) {
+        
+        return YES;
+    }
+    
+    return NO;
+}
+
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self.eventsArray removeObjectAtIndex:indexPath.row];
+        [self.eventsTableView reloadData];
+        //[self.presetArrayOfDictionaries ]
+    }
+}
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
+    MemoViewController *memoVC = [self.storyboard instantiateViewControllerWithIdentifier:@"MemoViewController"];
+    memoVC.event = self.eventsArray[indexPath.row];
+    
+    [self.navigationController pushViewController:memoVC animated:YES];
+}
 
 @end

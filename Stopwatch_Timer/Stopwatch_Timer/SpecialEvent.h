@@ -12,5 +12,5 @@
 
 @property (nonatomic) NSString* name;
 @property (nonatomic) NSTimeInterval time;
-
+@property (nonatomic) NSMutableArray *memos;
 @end
