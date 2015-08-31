@@ -23,6 +23,7 @@
     self.textField.delegate = self;
     self.eventsTableView.delegate = self;
     self.eventsTableView.dataSource = self;
+    self.eventsTableView.allowsMultipleSelectionDuringEditing =  NO;
     
     self.navigationItem.title = [NSString stringWithFormat:@"%@ Memos",self.event.name];
     // Do any additional setup after loading the view.
