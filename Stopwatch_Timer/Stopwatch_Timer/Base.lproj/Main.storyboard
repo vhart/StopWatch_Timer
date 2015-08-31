@@ -14,6 +14,7 @@
             <string>LiquidCrystal-Regular</string>
             <string>LiquidCrystal-Regular</string>
             <string>LiquidCrystal-Regular</string>
+            <string>LiquidCrystal-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -126,7 +127,7 @@
                                     <view contentMode="scaleToFill" verticalHuggingPriority="248" translatesAutoresizingMaskIntoConstraints="NO" id="887-Do-C8v">
                                         <rect key="frame" x="0.0" y="5" width="600" height="182"/>
                                         <subviews>
-                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="l76-UO-jJO">
+                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="l76-UO-jJO">
                                                 <rect key="frame" x="0.0" y="0.0" width="600" height="182"/>
                                                 <date key="date" timeIntervalSinceReferenceDate="462658961.56377399">
                                                     <!--2015-08-30 20:22:41 +0000-->
@@ -186,6 +187,7 @@
                     <tabBarItem key="tabBarItem" title="Item" id="Dpg-WQ-hV6"/>
                     <navigationItem key="navigationItem" id="baI-Mq-FBS"/>
                     <connections>
+                        <outlet property="eventDatePicker" destination="l76-UO-jJO" id="xis-Aw-Gch"/>
                         <outlet property="eventNameField" destination="7qx-EH-bbP" id="9Cr-hu-SRj"/>
                         <outlet property="eventsTableView" destination="Yqz-JN-4xv" id="o4e-Rm-9no"/>
                     </connections>
@@ -236,17 +238,16 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GPO-QV-ZSL">
-                                            <rect key="frame" x="15" y="12" width="32" height="20"/>
+                                            <rect key="frame" x="15" y="11" width="36" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <color key="textColor" red="0.31342516447368424" green="0.66773745888157898" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Sjw-oC-KmC">
-                                            <rect key="frame" x="543" y="12" width="42" height="20"/>
+                                            <rect key="frame" x="538" y="13" width="47" height="19"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" name="LiquidCrystal-Regular" family="Liquid Crystal" pointSize="18"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -305,9 +306,10 @@
                                     <constraint firstAttribute="height" constant="50" id="EIr-9T-fxH"/>
                                     <constraint firstAttribute="width" constant="80" id="YO6-B7-sdY"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="LiquidCrystal-Regular" family="Liquid Crystal" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="LiquidCrystal-Regular" family="Liquid Crystal" pointSize="21"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="-4" maxY="-3"/>
                                 <state key="normal" title="ADD!">
-                                    <color key="titleColor" red="0.0" green="0.56965013379999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.11798416940789473" green="0.97327883445789465" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -325,8 +327,8 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y2C-u8-rLP">
                                         <rect key="frame" x="0.0" y="5" width="600" height="216"/>
                                         <subviews>
-                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Ak1-vV-AQD">
-                                                <rect key="frame" x="0.0" y="0.0" width="600" height="216"/>
+                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Ak1-vV-AQD">
+                                                <rect key="frame" x="0.0" y="0.0" width="675" height="216"/>
                                                 <date key="date" timeIntervalSinceReferenceDate="462555634.35921699">
                                                     <!--2015-08-29 15:40:34 +0000-->
                                                 </date>
@@ -336,7 +338,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="Ak1-vV-AQD" firstAttribute="leading" secondItem="y2C-u8-rLP" secondAttribute="leading" id="PXD-gl-so3"/>
-                                            <constraint firstAttribute="trailing" secondItem="Ak1-vV-AQD" secondAttribute="trailing" id="St6-h1-yid"/>
+                                            <constraint firstAttribute="trailing" secondItem="Ak1-vV-AQD" secondAttribute="trailing" constant="-75" id="St6-h1-yid"/>
                                             <constraint firstItem="Ak1-vV-AQD" firstAttribute="top" secondItem="y2C-u8-rLP" secondAttribute="top" id="cUM-jY-fgX"/>
                                             <constraint firstAttribute="bottom" secondItem="Ak1-vV-AQD" secondAttribute="bottom" id="udg-zJ-N3U"/>
                                         </constraints>
@@ -566,8 +568,8 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ShO-uB-yJR" userLabel="DatePickerView">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
                                         <subviews>
-                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="PcI-uC-ldZ">
-                                                <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
+                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="PcI-uC-ldZ">
+                                                <rect key="frame" x="0.0" y="0.0" width="670" height="200"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="200" id="uQC-3U-z4I"/>
                                                 </constraints>
@@ -580,7 +582,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="PcI-uC-ldZ" firstAttribute="leading" secondItem="ShO-uB-yJR" secondAttribute="leading" id="IEW-RZ-iw0"/>
-                                            <constraint firstAttribute="trailing" secondItem="PcI-uC-ldZ" secondAttribute="trailing" id="JIK-ZW-dYB"/>
+                                            <constraint firstAttribute="trailing" secondItem="PcI-uC-ldZ" secondAttribute="trailing" constant="-70" id="JIK-ZW-dYB"/>
                                             <constraint firstItem="PcI-uC-ldZ" firstAttribute="top" secondItem="ShO-uB-yJR" secondAttribute="top" id="hmL-0O-fqF"/>
                                             <constraint firstAttribute="bottom" secondItem="PcI-uC-ldZ" secondAttribute="bottom" id="pru-dF-bQQ"/>
                                         </constraints>
@@ -627,6 +629,7 @@
                                             <constraint firstAttribute="width" constant="80" id="lTt-Os-Xva"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="LiquidCrystal-Regular" family="Liquid Crystal" pointSize="20"/>
+                                        <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="-6" maxY="-4"/>
                                         <state key="normal" title="Cancel">
                                             <color key="titleColor" red="1" green="0.043629991850000001" blue="0.16173161420000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -648,6 +651,7 @@
                                             <constraint firstAttribute="width" constant="80" id="hUP-uq-q9b"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="LiquidCrystal-Regular" family="Liquid Crystal" pointSize="20"/>
+                                        <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="-2" maxY="-4"/>
                                         <state key="normal" title="Start">
                                             <color key="titleColor" red="0.32941176470588235" green="1" blue="0.29411764705882354" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>

@@ -21,7 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.datePicker.datePickerMode = UIDatePickerModeTime;
+    self.datePicker.datePickerMode = UIDatePickerModeCountDownTimer;
     self.timerNameTextfield.delegate = self;
     // Do any additional setup after loading the view.
 }

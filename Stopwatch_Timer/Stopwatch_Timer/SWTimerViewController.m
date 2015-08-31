@@ -71,6 +71,8 @@
     self.animatedLabelsManager = [[LabelAnimator alloc] initWithLabels:self.secondsLabel medium:self.minutesLabel large:self.hoursLabel];
     [self.animatedLabelsManager setUpAllPropertyLabels];
     [self defaultAudioFile];
+    [self.datePicker addTarget:self action:@selector(changeSegment) forControlEvents:UIControlEventValueChanged];
+    
     
 }
 
@@ -233,6 +235,14 @@
     self.datePickerView.hidden = YES;
     
     
+}
+
+- (void)changeSegment{
+    
+    if ([self.segmentedController selectedSegmentIndex] !=0) {
+        self.segmentedController.selectedSegmentIndex=0;
+        [self segmentToggled:self.segmentedController];
+    }
 }
 //BEGIN COUNTDOWN
 - (void) countdownBegins{

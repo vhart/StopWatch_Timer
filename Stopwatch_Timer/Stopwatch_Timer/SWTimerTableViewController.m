@@ -72,9 +72,17 @@
         NSDictionary *temp = self.presetArrayOfDictionaries[indexPath.row -1];
         NSString *title = [temp objectForKey:@"name"];
         cell.textLabel.text = title;
-        [cell.textLabel setTextColor:[UIColor blackColor]];
+        //[cell.textLabel setTextColor:[UIColor blackColor]];
         Timer *timer = [temp objectForKey:@"timer"];
         cell.detailTextLabel.text = [[timer timeStringFromTimer]substringToIndex:5];
+        
+        
+        if (indexPath.row-1>=[self.presetArrayOfDictionaries count]-7) {
+            [cell.textLabel setTextColor:[UIColor colorWithRed:80.0f/255.0f green:170.0f/255.0f blue:255.0f/255.0f alpha:1.0f]];
+        }
+        else{
+            [cell.textLabel setTextColor:[UIColor redColor]];
+        }
     }
     
     return cell;
@@ -106,8 +114,9 @@
 - (void) newPresetWithName:(NSString *)name timeString:(NSString *)time{
     
     NSArray *timeComp = [time componentsSeparatedByString:@":"];
-    
-    Timer *newTimer = [[Timer alloc] initWithHours:[timeComp[0] intValue] minutes:[timeComp[1] intValue]];
+    int hours = [timeComp[0] intValue];
+    hours = hours==24? 0: hours;
+    Timer *newTimer = [[Timer alloc] initWithHours:hours minutes:[timeComp[1] intValue]];
     [self.presetArrayOfDictionaries insertObject:@{
                                                 @"name":name,
                                                 @"timer":newTimer
