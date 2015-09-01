@@ -34,6 +34,23 @@ CFTimeInterval const frameInterval = 1.0/60.0f;
 
 @implementation SWViewController
 
+// In each tabbed view controller
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super initWithCoder:aDecoder]) {
+        
+        // non-selected tab bar image
+        UIImage *defaultImage = [[UIImage imageNamed:@"stopwatch"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        
+        // selected tab bar image
+        UIImage *selectedImage = [[UIImage imageNamed:@"stopwatch"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        
+        // set the tab bar item with a title and both images
+        self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Stopwatch" image:defaultImage selectedImage:selectedImage];
+        return self;
+    }
+    return nil;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     

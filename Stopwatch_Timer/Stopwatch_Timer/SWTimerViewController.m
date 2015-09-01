@@ -47,6 +47,23 @@
 
 @implementation SWTimerViewController
 
+// In each tabbed view controller
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super initWithCoder:aDecoder]) {
+        
+        // non-selected tab bar image
+        UIImage *defaultImage = [[UIImage imageNamed:@"timer"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        
+        // selected tab bar image
+        UIImage *selectedImage = [[UIImage imageNamed:@"timer"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        
+        // set the tab bar item with a title and both images
+        self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Timer" image:defaultImage selectedImage:selectedImage];
+        return self;
+    }
+    return nil;
+}
+
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
